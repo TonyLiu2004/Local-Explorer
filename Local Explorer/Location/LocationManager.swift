@@ -36,7 +36,7 @@ extension LocationManager: CLLocationManagerDelegate {
         case .authorizedAlways:
             print("Debug: Authorized always")
         case .authorizedWhenInUse:
-            print("Debug: Authroized when in use")
+            print("Debug: Authorized when in use")
         @unknown default:
             break
         }
