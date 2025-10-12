@@ -14,6 +14,7 @@ struct DiscoverView: View {
 
     var body: some View {
         VStack {
+            Text("Discover View")
             Text("Coordinates: \(location.coordinate.latitude), \(location.coordinate.longitude)")
 
             if let decoded = googlePlacesJSON {
