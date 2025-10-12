@@ -16,7 +16,7 @@ func googlePlacesCall(
     type: String? = nil,
     completion: @escaping (String?) -> Void	
 ) {
-    let apiKey = "AIzaSyDkV8-aDXT1Qmwh1ZNm7DQjp1JXpcNysKA"
+    let apiKey =  Secrets.GooglePlacesKey
     var urlString = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=\(lat),\(lon)&radius=\(radius)&key=\(apiKey)"
 
     if let keyword = keyword {
