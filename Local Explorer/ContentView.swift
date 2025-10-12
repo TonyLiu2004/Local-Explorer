@@ -10,30 +10,39 @@ import SwiftUI
 struct ContentView: View {
     @ObservedObject var locationManager = LocationManager.shared
     @StateObject var overpassViewModel = OverpassViewModel()
+    @StateObject var googlePlacesViewModel = GooglePlacesViewModel()
+    
     var body: some View {
-        Group {
+        Group {	
             if let location = locationManager.userLocation {
-                VStack {
-                    Text("Coordinates: \(location.coordinate.latitude), \(location.coordinate.longitude)")
-                    Text("Hello World")
-                    if let json = overpassViewModel.overpassJSON {
-                        Text("Restaurants JSON fetched!")
-                        Text(json)
-                        // Or parse and show nicely
-                    } else {
-                        Text("Fetching restaurants...")
-                    }
+                TabView {
+                    DiscoverView(
+                        googlePlacesJSON: googlePlacesViewModel.decoded,
+                        location: location
+                    )
+                        .tabItem { Label("Home", systemImage: "house") }
+
+                    Browse(
+                        googlePlacesJSON: googlePlacesViewModel.decoded,
+                        location: location
+                    )
+                        .tabItem { Label("Places", systemImage: "mappin.and.ellipse") }
+
+                    SavedView()
+                        .tabItem { Label("Saved", systemImage: "bookmark") }
                 }
                 .onAppear {
-                    overpassViewModel.fetchRestaurants(
+                    googlePlacesViewModel.fetchNearbyPlaces(
                         lat: location.coordinate.latitude,
-                        lon: location.coordinate.longitude)
+                        lon: location.coordinate.longitude,
+                        radius: 100
+                    )
                 }
                 .onChange(of: location) { oldLocation, newLocation in
-                    // Fetch again whenever location changes
-                    overpassViewModel.fetchRestaurants(
+                    googlePlacesViewModel.fetchNearbyPlaces(
                         lat: newLocation.coordinate.latitude,
-                        lon: newLocation.coordinate.longitude
+                        lon: newLocation.coordinate.longitude,
+                        radius: 100
                     )
                 }
             } else {

@@ -6,14 +6,40 @@
 //
 
 import SwiftUI
+import CoreLocation
 
-struct BrowseV: View {
+struct Browse: View {
+    let googlePlacesJSON: GooglePlacesResponse?
+    let location: CLLocation
+
     var body: some View {
         VStack {
-            Text("BrowseV Page")
-                .font(.largeTitle)
-            Spacer()
+            Text("Nearby places around (\(location.coordinate.latitude), \(location.coordinate.longitude))")
+                .font(.headline)
+            if let decoded = googlePlacesJSON {
+                ScrollView {
+                    VStack(alignment: .leading, spacing: 10) {
+                        ForEach(decoded.results) { place in
+                            VStack(alignment: .leading, spacing: 4) {
+                                Text(place.name)
+                                    .font(.headline)
+                                Text(place.place_id)
+                                    .font(.caption)
+                                    .foregroundColor(.gray)
+                                Divider()
+                            }
+                            .padding(.horizontal)
+                        }
+                    }
+                }
+            } else {
+                Text("No data yet.")
+            }
         }
         .padding()
     }
+}
+
+#Preview {
+    ContentView()
 }
