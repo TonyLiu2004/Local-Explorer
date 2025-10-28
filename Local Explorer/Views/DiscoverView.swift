@@ -9,37 +9,29 @@ import Foundation
 import CoreLocation
 
 struct DiscoverView: View {
-    let googlePlacesJSON: GooglePlacesResponse?
+//    let googlePlacesJSON: GooglePlacesResponse?
     let location: CLLocation
-
+    @StateObject var viewModel = GooglePlacesViewModel()
+    
     var body: some View {
         VStack {
             Text("Discover View")
             Text("Coordinates: \(location.coordinate.latitude), \(location.coordinate.longitude)")
-
-            if let decoded = googlePlacesJSON {
-                ScrollView {
-                    VStack(alignment: .leading, spacing: 8) {
-                        ForEach(decoded.results) { place in
-                            VStack(alignment: .leading, spacing: 2) {
-                                Text(place.name)
-                                    .font(.headline)
-                                Text(place.place_id)
-                                    .font(.caption)
-                                    .foregroundColor(.gray)
-                                Divider()
-                            }
-                            .padding(.horizontal)
-                        }
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 16) {
+                    ForEach(viewModel.places) { place in
+                        PlaceCard(place: place, viewModel: viewModel)
                     }
-                    .padding(.top)
                 }
-            } else {
-                Text("Fetching Google Places data...")
+                .padding(.horizontal)
+                .padding(.vertical, 4)
             }
         }
-        .padding()
-    }	
+        .padding(.top)
+        .onAppear {
+            viewModel.fetchNearbyPlaces(lat: location.coordinate.latitude, lon: location.coordinate.longitude)
+        }
+    }
 }
 
 #Preview {

@@ -7,13 +7,67 @@
 
 import Foundation
 
-struct GooglePlacesResponse: Codable {
+struct GooglePlacesResponse: Decodable {
     let results: [Place]
 }
 
-struct Place: Codable, Identifiable {
+struct PlaceResponse: Decodable {
+    let html_attributions: [String]
+    let results: [Place]
+    let status: String
+}
+
+struct Place: Decodable, Identifiable {
     let place_id: String
+    let geometry: Geometry?
+    let icon: String?
+    let icon_background_color: String?
+    let icon_mask_base_uri: String?
     let name: String
+    let business_status: String?
+    let photos: [Photo]?
     
     var id: String { place_id } // use place_id as the unique identifier
+    
+    let plus_code: PlusCode?
+    let price_level: Int?
+    let rating: Double?
+    let reference: String?
+    let scope: String?
+    let types: [String]?
+    let user_ratings_total: Int?
+    let vicinity: String?
+    let international_phone_number: String?
+}
+
+struct Geometry: Decodable {
+    let location: Location
+    let viewport: Viewport?
+}
+
+struct Location: Decodable {
+    let lat: Double
+    let lng: Double
+}
+
+struct Viewport: Decodable {
+    let northeast: Coordinate
+    let southwest: Coordinate
+}
+
+struct Coordinate: Decodable {
+    let lat: Double
+    let lng: Double
+}
+
+struct Photo: Decodable {
+    let height: Int
+    let html_attributions: [String]
+    let photo_reference: String
+    let width: Int
+}
+
+struct PlusCode: Decodable {
+    let compound_code: String?
+    let global_code: String?
 }
