@@ -65,4 +65,32 @@ class GooglePlacesService {
         .resume()
     }
     
+    //Fetches more detailed info about a specific place based on placeId
+    func fetchPlace(placeId: String, completion: @escaping (Result<PlaceDetails, Error>) -> Void) {
+        let urlString = "https://maps.googleapis.com/maps/api/place/details/json?place_id=\(placeId)&key=\(apiKey)"
+        
+        guard let url = URL(string: urlString) else { return }
+
+        session.dataTask(with: url) { data, _, error in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+
+            guard let data = data else { return }
+
+            do {
+                let response = try JSONDecoder().decode(PlaceDetailsResponse.self, from: data)
+                completion(.success(response.result))
+            } catch {
+                completion(.failure(error))
+            }
+        }
+        .resume()
+    }
+
+    struct PlaceDetailsResponse: Decodable {
+        let result: PlaceDetails
+    }
+
 }

@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct PlaceCard: View {
-    let place: Place
+//    let place: Place
+    let place: PlaceDetails
     @StateObject var viewModel = GooglePlacesViewModel()
     
     var body: some View {

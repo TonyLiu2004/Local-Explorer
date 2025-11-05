@@ -9,16 +9,40 @@ import SwiftUI
 
 struct ContentView: View {
     @ObservedObject var locationManager = LocationManager.shared
-    @StateObject var overpassViewModel = OverpassViewModel()
     @StateObject var googlePlacesViewModel = GooglePlacesViewModel()
     
     var body: some View {
-        Group {	
+        Group {
+            //Top Bar
+            VStack(alignment: .leading) {
+//                Text("Coordinates: \(location.coordinate.latitude), \(location.coordinate.longitude)")
+//                    .font(.caption)
+//                    .foregroundColor(.secondary)
+                HStack {
+                    Image(systemName: "location")
+                        .font(.system(size: 10, weight: .light))
+                        .foregroundColor(.black)
+                        .padding(4)
+                        .background(
+                            Circle()
+                                .fill(Color.green.opacity(0.3))
+                        )
+                    Text("Current Location: ")
+                        .bold()
+                        .font(.caption)
+                    + Text(locationManager.locationName)
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                }
+            }
+            .padding()
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .overlay(Divider(), alignment: .bottom)
+            
             if let location = locationManager.userLocation {
                 TabView {
                     DiscoverView(
                         location: location,
-                        locationName: locationManager.locationName
                     )
                         .tabItem { Label("Home", systemImage: "house") }
 
@@ -31,20 +55,20 @@ struct ContentView: View {
                     SavedView()
                         .tabItem { Label("Saved", systemImage: "bookmark") }
                 }
-                .onAppear {
-                    googlePlacesViewModel.fetchNearbyPlaces(
-                        lat: location.coordinate.latitude,
-                        lon: location.coordinate.longitude,
-                        radius: 100
-                    )
-                }
-                .onChange(of: location) { oldLocation, newLocation in
-                    googlePlacesViewModel.fetchNearbyPlaces(
-                        lat: newLocation.coordinate.latitude,
-                        lon: newLocation.coordinate.longitude,
-                        radius: 100
-                    )
-                }
+//                .onAppear {
+//                    googlePlacesViewModel.fetchNearbyPlaces(
+//                        lat: location.coordinate.latitude,
+//                        lon: location.coordinate.longitude,
+//                        radius: 100
+//                    )
+//                }
+//                .onChange(of: location) { oldLocation, newLocation in
+//                    googlePlacesViewModel.fetchNearbyPlaces(
+//                        lat: newLocation.coordinate.latitude,
+//                        lon: newLocation.coordinate.longitude,
+//                        radius: 100
+//                    )
+//                }
             } else {
                 LocationRequestView()
             }

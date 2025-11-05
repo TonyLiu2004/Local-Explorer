@@ -9,34 +9,32 @@ import SwiftUI
 import CoreLocation
 
 struct Browse: View {
-//    let googlePlacesJSON: GooglePlacesResponse?
     let location: CLLocation
-
+    @StateObject var viewModel = GooglePlacesViewModel()
+    
     var body: some View {
         VStack {
             Text("Nearby places around (\(location.coordinate.latitude), \(location.coordinate.longitude))")
                 .font(.headline)
-//            if let decoded = googlePlacesJSON {
-//                ScrollView {
-//                    VStack(alignment: .leading, spacing: 10) {
-//                        ForEach(decoded.results) { place in
-//                            VStack(alignment: .leading, spacing: 4) {
-//                                Text(place.name)
-//                                    .font(.headline)
-//                                Text(place.place_id)
-//                                    .font(.caption)
-//                                    .foregroundColor(.gray)
-//                                Divider()
-//                            }
-//                            .padding(.horizontal)
-//                        }
-//                    }
-//                }
-//            } else {
-//                Text("No data yet.")
-//            }
+            List(viewModel.placeDetailsList, id: \.place_id) { placeDetails in
+                VStack(alignment: .leading) {
+                    Text(placeDetails.name)
+                        .bold()
+                    Text(placeDetails.formatted_address ?? "No address")
+//                    Text(String(describing: placeDetails))
+//                        .font(.caption)
+//                        .foregroundColor(.secondary)
+                }
+            }
         }
         .padding()
+        .onAppear {
+            viewModel.fetchNearbyPlaces(
+                lat: location.coordinate.latitude,
+                lon: location.coordinate.longitude,
+                radius: 100
+            )
+        }
     }
 }
 

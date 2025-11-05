@@ -11,39 +11,12 @@ import CoreLocation
 struct DiscoverView: View {
 //    let googlePlacesJSON: GooglePlacesResponse?
     let location: CLLocation
-    let locationName: String
     @StateObject var allViewModel = GooglePlacesViewModel()
     @StateObject var recommendedViewModel = GooglePlacesViewModel()
     @StateObject var cafesViewModel = GooglePlacesViewModel()
     
     var body: some View {
         VStack(spacing: 0) {
-            // Fixed top bar
-            VStack(alignment: .leading) {
-//                Text("Coordinates: \(location.coordinate.latitude), \(location.coordinate.longitude)")
-//                    .font(.caption)
-//                    .foregroundColor(.secondary)
-                HStack {
-                    Image(systemName: "location")
-                        .font(.system(size: 10, weight: .light))
-                        .foregroundColor(.black)
-                        .padding(4)
-                        .background(
-                            Circle()
-                                .fill(Color.green.opacity(0.3))
-                        )
-                    Text("Current Location: ")
-                        .bold()
-                        .font(.caption)
-                    + Text(locationName)
-                        .font(.caption)
-                        .foregroundColor(.secondary)
-                }
-            }
-            .padding()
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .overlay(Divider(), alignment: .bottom)
-            
             ScrollView {
                 VStack(alignment: .leading, spacing: 16) {
                     // Main title
@@ -83,10 +56,13 @@ struct HorizontalPlacesList: View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 16) {
                 if viewModel.places.isEmpty {
-                    PlaceCard(place: .placeholder, viewModel: viewModel)
+                    PlaceCard(place: PlaceDetails.placeholder, viewModel: viewModel)
                 } else {
-                    ForEach(viewModel.places) { place in
-                        PlaceCard(place: place, viewModel: viewModel)
+//                    ForEach(viewModel.places) { place in
+//                        PlaceCard(place: place, viewModel: viewModel)
+//                    }
+                    ForEach(viewModel.placeDetailsList.filter { $0.photos != nil && !$0.photos!.isEmpty }) { placeDetail in
+                        PlaceCard(place: placeDetail, viewModel: viewModel)
                     }
                 }
             }
