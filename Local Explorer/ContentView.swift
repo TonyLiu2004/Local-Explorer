@@ -17,7 +17,8 @@ struct ContentView: View {
             if let location = locationManager.userLocation {
                 TabView {
                     DiscoverView(
-                        location: location
+                        location: location,
+                        locationName: locationManager.locationName
                     )
                         .tabItem { Label("Home", systemImage: "house") }
 

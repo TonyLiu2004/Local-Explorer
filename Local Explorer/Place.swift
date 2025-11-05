@@ -40,6 +40,28 @@ struct Place: Decodable, Identifiable {
     let international_phone_number: String?
 }
 
+extension Place {
+    static let placeholder = Place(
+        place_id: "placeholder",
+        geometry: nil,
+        icon: nil,
+        icon_background_color: nil,
+        icon_mask_base_uri: nil,
+        name: "No places found",
+        business_status: nil,
+        photos: nil,
+        plus_code: nil,
+        price_level: nil,
+        rating: nil,
+        reference: nil,
+        scope: nil,
+        types: nil,
+        user_ratings_total: nil,
+        vicinity: nil,
+        international_phone_number: nil
+    )
+}
+
 struct Geometry: Decodable {
     let location: Location
     let viewport: Viewport?

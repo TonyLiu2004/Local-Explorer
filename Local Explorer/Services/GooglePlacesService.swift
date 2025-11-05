@@ -30,7 +30,7 @@ class GooglePlacesService {
         if let type = type {
             urlString += "&type=\(type.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "")"
         }
-
+//        print(urlString)
         guard let url = URL(string: urlString) else { return }
 
         session.dataTask(with: url) { data, _, error in
@@ -64,4 +64,5 @@ class GooglePlacesService {
         }
         .resume()
     }
+    
 }
