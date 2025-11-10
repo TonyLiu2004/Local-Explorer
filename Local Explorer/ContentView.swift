@@ -42,12 +42,12 @@ struct ContentView: View {
             if let location = locationManager.userLocation {
                 TabView {
                     DiscoverView(
-                        location: location,
+//                      location: location,
+                        locationManager: locationManager
                     )
                         .tabItem { Label("Home", systemImage: "house") }
 
                     Browse(
-//                        googlePlacesJSON: googlePlacesViewModel.decoded,
                         location: location
                     )
                         .tabItem { Label("Places", systemImage: "mappin.and.ellipse") }

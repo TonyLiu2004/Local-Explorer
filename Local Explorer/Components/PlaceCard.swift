@@ -11,7 +11,7 @@ import CoreLocation
 struct PlaceCard: View {
 //    let place: Place
     let place: PlaceDetails
-    let location: CLLocation
+    let location: CLLocation?
     @StateObject var viewModel = GooglePlacesViewModel()
 
     var priceText: String {
@@ -31,14 +31,19 @@ struct PlaceCard: View {
         return CLLocation(latitude: lat, longitude: long)
     }
     var distanceText: String {
-        let distanceMeters = location.distance(from: placeCoords)
-        let distanceMiles = distanceMeters / 1609.34
-        
-        if distanceMiles < 0.1 {
-            let feet = distanceMeters * 3.28084
-            return "\(Int(feet)) ft"
+        if let loc = location
+        {
+            let distanceMeters = loc.distance(from: placeCoords)
+            let distanceMiles = distanceMeters / 1609.34
+            
+            if distanceMiles < 0.1 {
+                let feet = distanceMeters * 3.28084
+                return "\(Int(feet)) ft"
+            } else {
+                return String(format: "%.1f mi", distanceMiles)
+            }
         } else {
-            return String(format: "%.1f mi", distanceMiles)
+            return ""
         }
     }
     
@@ -64,9 +69,6 @@ struct PlaceCard: View {
             }
             .onAppear {
                 print(place.name, place.place_id)
-//                if let price = place.price_level {
-//                    print(price)
-//                }
             }
             .padding([.leading, .trailing], 8)
             

@@ -10,10 +10,13 @@ import CoreLocation
 
 struct DiscoverView: View {
 //    let googlePlacesJSON: GooglePlacesResponse?
-    let location: CLLocation
+//    let location: CLLocation
+    let locationManager: LocationManager
     @StateObject var allViewModel = GooglePlacesViewModel()
     @StateObject var recommendedViewModel = GooglePlacesViewModel()
     @StateObject var cafesViewModel = GooglePlacesViewModel()
+    
+    @State private var currentLocation: CLLocation?
     
     let options = [
         Option(label: "All", value: "all"),
@@ -47,19 +50,22 @@ struct DiscoverView: View {
                     }
                     
                     // All Locations
-                    HorizontalPlacesList(viewModel: allViewModel, location: location, type: selectedOption)
+                    if let location = locationManager.userLocation
+                    {
+                        HorizontalPlacesList(viewModel: allViewModel, location: location, type: selectedOption)
                     
-                    // Recommended
-                    Text("Recommended for you")
-                        .font(.headline)
-                        .padding(.horizontal)
-                    HorizontalPlacesList(viewModel: recommendedViewModel, location: location, type: "restaurant")
-                    
-                    // Cafes
-                    Text("Cafes")
-                        .font(.headline)
-                        .padding(.horizontal)
-                    HorizontalPlacesList(viewModel: cafesViewModel, location: location, type: "cafe")
+                        // Recommended
+                        Text("Recommended for you")
+                            .font(.headline)
+                            .padding(.horizontal)
+                        HorizontalPlacesList(viewModel: recommendedViewModel, location: location, type: "restaurant")
+                        
+                        // Cafes
+                        Text("Cafes")
+                            .font(.headline)
+                            .padding(.horizontal)
+                        HorizontalPlacesList(viewModel: cafesViewModel, location: location, type: "cafe")
+                    }
                 } //end Vstack
                 .padding(.bottom, 32)
             } //end ScrollView
@@ -71,25 +77,24 @@ struct HorizontalPlacesList: View {
     @ObservedObject var viewModel: GooglePlacesViewModel
     let location: CLLocation
     var type: String? = nil
+    @State private var lastLocation: CLLocation?
 
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             LazyHStack(spacing: 16) {
-                if viewModel.places.isEmpty {
+                if (viewModel.placeDetailsList.isEmpty) {
                     PlaceCard(place: PlaceDetails.placeholder, location:location, viewModel: viewModel)
                 } else {
-//                    ForEach(viewModel.places) { place in
-//                        PlaceCard(place: place, viewModel: viewModel)
-//                    }
-                    ForEach(viewModel.placeDetailsList.filter { $0.photos != nil && !$0.photos!.isEmpty }) { placeDetail in
+                    ForEach(viewModel.placeDetailsList) { placeDetail in
                         PlaceCard(place: placeDetail, location: location, viewModel: viewModel)
                     }
                 }
             }
             .padding(.horizontal)
             .padding(.vertical, 4)
-        }
+        } //end scrollview
         .onAppear {
+            lastLocation = location
             viewModel.fetchNearbyPlaces(
                 lat: location.coordinate.latitude,
                 lon: location.coordinate.longitude,
@@ -102,6 +107,20 @@ struct HorizontalPlacesList: View {
                 lon: location.coordinate.longitude,
                 type: type
             )
+        }
+        .onChange(of: location) {
+            if let last = lastLocation {
+                let distance = location.distance(from: last) // meters
+                if distance > 200 { //about 2.5 streets
+                    print("Moved \(distance)m — refetching places")
+                    viewModel.fetchNearbyPlaces(
+                        lat: location.coordinate.latitude,
+                        lon: location.coordinate.longitude,
+                        type: type
+                    )
+                    lastLocation = location
+                }
+            }
         }
     }
 }

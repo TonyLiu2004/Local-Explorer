@@ -43,7 +43,9 @@ class GooglePlacesViewModel: ObservableObject {
               service.fetchPlace(placeId: placeId) { result in
                   switch result {
                   case .success(let placeDetails):
-                      details.append(placeDetails)
+                      if let photos = placeDetails.photos, !photos.isEmpty { //exclude places with no photos
+                          details.append(placeDetails)
+                      }
                   case .failure(let error):
                       fetchError = error
                   }

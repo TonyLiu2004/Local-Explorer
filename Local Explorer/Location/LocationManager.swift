@@ -70,11 +70,11 @@ extension LocationManager: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){
         guard let location = locations.last else {return}
-//        self.userLocation = location
-//        reverseGeocode(location: location)
+        self.userLocation = location
+        reverseGeocode(location: location)
         // testing, set location to times square
-        self.userLocation = CLLocation(latitude: 40.75634258686625, longitude: -73.985465188474)
-        reverseGeocode(location: CLLocation(latitude: 40.7580, longitude: -73.9855))
+//        self.userLocation = CLLocation(latitude: 40.75634258686625, longitude: -73.985465188474)
+//        reverseGeocode(location: CLLocation(latitude: 40.7580, longitude: -73.9855))
     }
 }
 	
