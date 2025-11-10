@@ -6,47 +6,83 @@
 //
 
 import SwiftUI
+import CoreLocation
 
 struct PlaceCard: View {
 //    let place: Place
     let place: PlaceDetails
+    let location: CLLocation
     @StateObject var viewModel = GooglePlacesViewModel()
+
+    var priceText: String {
+        guard let price = place.price_level else { return "N/A" }
+        switch price {
+        case 0: return "Free"
+        case 1: return "$0–20"
+        case 2: return "$20–100"
+        case 3: return "$100+"
+        case 4: return "$200+"
+        default: return "N/A"
+        }
+    }
+    var placeCoords: CLLocation {
+        let long = place.geometry.location.lng
+        let lat = place.geometry.location.lat
+        return CLLocation(latitude: lat, longitude: long)
+    }
+    var distanceText: String {
+        let distanceMeters = location.distance(from: placeCoords)
+        let distanceMiles = distanceMeters / 1609.34
+        
+        if distanceMiles < 0.1 {
+            let feet = distanceMeters * 3.28084
+            return "\(Int(feet)) ft"
+        } else {
+            return String(format: "%.1f mi", distanceMiles)
+        }
+    }
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            
-            HStack(spacing: 8) {
-                // Place name
+            VStack(alignment: .leading, spacing: 8) {
                 Text(place.name)
                     .font(.headline)
-                    .lineLimit(1) // optional: keep it on one line
-
-                // Rating and types in smaller caption
-                if let rating = place.rating, let types = place.types {
-                    Text("⭐️ \(String(format: "%.1f", rating)) (\(place.user_ratings_total ?? 0)) - \(types.joined(separator: ", "))")
-                        .font(.caption)
-                        .foregroundColor(.gray)
-                        .lineLimit(1)
-                } else if let rating = place.rating {
-                    Text("⭐️ \(String(format: "%.1f", rating)) (\(place.user_ratings_total ?? 0))")
-                        .font(.caption)
-                        .foregroundColor(.gray)
-                        .lineLimit(1)
-                } else if let types = place.types {
-                    Text(types.joined(separator: ", "))
-                        .font(.caption)
-                        .foregroundColor(.gray)
-                        .lineLimit(1)
+                    .lineLimit(1)
+                HStack(spacing: 8) {
+                    if let rating = place.rating {
+                        Text("\(String(format: "%.1f", rating)) ⭐️ (\(place.user_ratings_total ?? 0))  -")
+                            .captionStyle()
+                    }
+                    Text(distanceText)
+                        .captionStyle()
+                    if let types = place.types {
+                        Text(types.joined(separator: ", "))
+                            .captionStyle()
+                    }
                 }
+                .frame(maxWidth: 300)
+            }
+            .onAppear {
+                print(place.name, place.place_id)
+//                if let price = place.price_level {
+//                    print(price)
+//                }
             }
             .padding([.leading, .trailing], 8)
-//            if let photos = place.photos {
-//                ForEach(photos, id: \.photo_reference) { photo in
-//                    Text(photo.photo_reference)
-//                        .font(.caption)
-//                        .foregroundColor(.gray)	
-//                }
-//            }
+            
+            if let current = place.current_opening_hours {
+                Text(current.open_now == true ? "Open" : "Closed")
+                    .captionStyle()
+                    .padding(.horizontal, 8)
+            } else {
+                Text("Hours unavailable")
+                    .captionStyle()
+                    .padding(.horizontal, 8)
+            }
+            Text("Price: \(priceText)")
+                .captionStyle()
+                .padding(.horizontal, 8)
+
             if let image = viewModel.getPhoto(for: place) {
                 Image(uiImage: image)
                     .resizable()
@@ -64,9 +100,8 @@ struct PlaceCard: View {
         .padding(.vertical, 8)
         .padding(.horizontal, 8)
         .frame(width: 360)  // Fixed width for horizontal scrolling
-        .background(Color(.systemGray6))
-        .cornerRadius(12)
-        .shadow(radius: 2)
+        .cardStyle()
+
     }
 }
 

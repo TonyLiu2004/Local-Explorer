@@ -13,6 +13,8 @@ class GooglePlacesService {
     private let apiKey = Secrets.GooglePlacesKey
     private let session = URLSession.shared
     
+    let excludedTypes: [String] = ["political", "neighborhood", "parking"]
+    
     // MARK: - 1. Nearby search
     func searchPlaces(
         lat: Double,
@@ -42,7 +44,11 @@ class GooglePlacesService {
             guard let data = data else { return }
             do {
                 let response = try JSONDecoder().decode(PlaceResponse.self, from: data)
-                completion(.success(response.results))
+                let filtered = response.results.filter { place in
+                    guard let types = place.types else { return true } // keep if types is nil
+                    return !types.contains(where: { self.excludedTypes.contains($0) })
+                }
+                completion(.success(filtered))
             } catch {
                 completion(.failure(error))
             }

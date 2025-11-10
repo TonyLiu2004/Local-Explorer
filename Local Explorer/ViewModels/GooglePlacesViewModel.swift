@@ -21,7 +21,7 @@ class GooglePlacesViewModel: ObservableObject {
     func fetchNearbyPlaces(lat: Double, lon: Double, radius: Int = 100, keyword: String? = nil, type: String? = nil) {
         service.searchPlaces(lat: lat, lon: lon, radius: radius, keyword: keyword, type: type) { [weak self] result in
             DispatchQueue.main.async {
-                switch result {	
+                switch result {
                 case .success(let fetchedPlaces):
                     self?.places = fetchedPlaces
                     self?.fetchDetailsForPlaces(fetchedPlaces)

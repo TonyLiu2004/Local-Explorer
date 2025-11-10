@@ -34,7 +34,7 @@ struct Place: Decodable, Identifiable {
 //    let rating: Double?
 //    let reference: String?
 //    let scope: String?
-//    let types: [String]?
+    let types: [String]?
 //    let user_ratings_total: Int?
 //    let vicinity: String?
 //    let international_phone_number: String?
@@ -56,7 +56,7 @@ extension Place {
 //        rating: nil,
 //        reference: nil,
 //        scope: nil,
-//        types: nil,
+        types: nil,
 //        user_ratings_total: nil,
 //        vicinity: nil,
 //        international_phone_number: nil
@@ -72,6 +72,7 @@ struct PlaceDetails: Decodable, Identifiable {
     let international_phone_number: String?
     let formatted_phone_number: String?
     let website: String?
+    let price_level: Int?
     let rating: Double?
     let user_ratings_total: Int?
     let types: [String]?
@@ -106,6 +107,7 @@ extension PlaceDetails {
         international_phone_number: nil,
         formatted_phone_number: nil,
         website: nil,
+        price_level: nil,
         rating: nil,
         user_ratings_total: nil,
         types: nil,

@@ -15,6 +15,16 @@ struct DiscoverView: View {
     @StateObject var recommendedViewModel = GooglePlacesViewModel()
     @StateObject var cafesViewModel = GooglePlacesViewModel()
     
+    let options = [
+        Option(label: "All", value: "all"),
+        Option(label: "Restaurants", value: "restaurant"),
+        Option(label: "Parks", value: "park"),
+        Option(label: "Shopping", value: "store"),
+        Option(label: "Cafes", value: "cafe"),
+        Option(label: "Museums", value: "museum")
+    ]
+    
+    @State private var selectedOption: String?
     var body: some View {
         VStack(spacing: 0) {
             ScrollView {
@@ -25,9 +35,19 @@ struct DiscoverView: View {
                         .fontWeight(.bold)
                         .padding(.horizontal)
                         .padding(.top, 16) // adds space from top safe area
+                    //Selectable Boxes
+                    SelectableBoxRow(
+                        options: options,
+                        selectedOption: $selectedOption
+                    )
+                    .onAppear {
+                        if selectedOption == nil {
+                            selectedOption = options.first?.value
+                        }
+                    }
                     
                     // All Locations
-                    HorizontalPlacesList(viewModel: allViewModel, location: location)
+                    HorizontalPlacesList(viewModel: allViewModel, location: location, type: selectedOption)
                     
                     // Recommended
                     Text("Recommended for you")
@@ -54,15 +74,15 @@ struct HorizontalPlacesList: View {
 
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
-            HStack(spacing: 16) {
+            LazyHStack(spacing: 16) {
                 if viewModel.places.isEmpty {
-                    PlaceCard(place: PlaceDetails.placeholder, viewModel: viewModel)
+                    PlaceCard(place: PlaceDetails.placeholder, location:location, viewModel: viewModel)
                 } else {
 //                    ForEach(viewModel.places) { place in
 //                        PlaceCard(place: place, viewModel: viewModel)
 //                    }
                     ForEach(viewModel.placeDetailsList.filter { $0.photos != nil && !$0.photos!.isEmpty }) { placeDetail in
-                        PlaceCard(place: placeDetail, viewModel: viewModel)
+                        PlaceCard(place: placeDetail, location: location, viewModel: viewModel)
                     }
                 }
             }
@@ -70,6 +90,13 @@ struct HorizontalPlacesList: View {
             .padding(.vertical, 4)
         }
         .onAppear {
+            viewModel.fetchNearbyPlaces(
+                lat: location.coordinate.latitude,
+                lon: location.coordinate.longitude,
+                type: type
+            )
+        }
+        .onChange(of: type) {
             viewModel.fetchNearbyPlaces(
                 lat: location.coordinate.latitude,
                 lon: location.coordinate.longitude,
