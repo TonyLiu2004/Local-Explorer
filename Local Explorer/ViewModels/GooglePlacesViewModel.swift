@@ -17,19 +17,42 @@ class GooglePlacesViewModel: ObservableObject {
     
     private let service = GooglePlacesService()
     
+    func loadSamplePlaces() {
+        guard let url = Bundle.main.url(forResource: "placeDetailsSample", withExtension: "json") else {
+            print("Failed to find places_sample.json")
+            return
+        }
+        
+        do {
+            let data = try Data(contentsOf: url)
+            let decoder = JSONDecoder()
+            
+            // Decode the JSON directly into PlaceDetails array
+            let samplePlaceDetails = try decoder.decode([PlaceDetails].self, from: data)
+            
+            // Update your published properties on main thread
+            DispatchQueue.main.async {
+                self.placeDetailsList = samplePlaceDetails
+            }
+        } catch {
+            print("Failed to load sample places: \(error)")
+        }
+    }
+    
     // MARK: - Nearby Places
     func fetchNearbyPlaces(lat: Double, lon: Double, radius: Int = 100, keyword: String? = nil, type: String? = nil) {
-        service.searchPlaces(lat: lat, lon: lon, radius: radius, keyword: keyword, type: type) { [weak self] result in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let fetchedPlaces):
-                    self?.places = fetchedPlaces
-                    self?.fetchDetailsForPlaces(fetchedPlaces)
-                case .failure(let error):
-                    self?.errorMessage = error.localizedDescription
-                }
-            }
-        }
+        loadSamplePlaces()
+//        service.searchPlaces(lat: lat, lon: lon, radius: radius, keyword: keyword, type: type) { [weak self] result in
+//            DispatchQueue.main.async {
+//                switch result {
+//                case .success(let fetchedPlaces):
+//                    self?.places = fetchedPlaces
+//                    self?.fetchDetailsForPlaces(fetchedPlaces)
+//                case .failure(let error):
+//                    self?.errorMessage = error.localizedDescription
+//                }
+//            }
+//        }
     }
     
     private func fetchDetailsForPlaces(_ places: [Place]) {

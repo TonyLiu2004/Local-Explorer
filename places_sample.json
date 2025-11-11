@@ -1,0 +1,1048 @@
+{
+   "html_attributions" : [],
+   "next_page_token" : "AWn5SU7FOQqCQme372L0ohhjWXmpppU7aOewS5xFen79HV3bdwtlOa08LlNgVPl3eRtSRNl6O9IlxJOT1867zvuHZKk7GLbqlakOk0UGu5I2lLKct99eTbg38NU1u96p9kJVkn-wrzfQhtvRF4xcmWmY-HSEVWjbt-eULHGLWxkO4QjnnOHmHOqPZO6f1WV5vIIQJ_4zDiT_JfrLdb4ZTpJg9KLaZLnCgt-YbkFYbSIvovqRnE3unJR8mcUxTdkHIBRNdO2H_AbkC5vlcvnDRNsE8oYkS7sl59DDJBcnV-7Fq1to7St8duPBjsTm2a2GyqKRdt_gjJmxRGxx0fWFNMO_DSpbqrC99i4HoPKSpjt-nVDcuhysEXh5yNls_agNf86sipJ_ewxCyXV49wAdNSXn_yeeBQmL-skFfVaQagc6gUaC",
+   "results" :
+   [
+      {
+         "geometry" :
+         {
+            "location" :
+            {
+               "lat" : 40.7127753,
+               "lng" : -74.0059728
+            },
+            "viewport" :
+            {
+               "northeast" :
+               {
+                  "lat" : 40.91770499010228,
+                  "lng" : -73.70016897460856
+               },
+               "southwest" :
+               {
+                  "lat" : 40.4765780006847,
+                  "lng" : -74.25884295708299
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/geocode-71.png",
+         "icon_background_color" : "#7B9EB0",
+         "icon_mask_base_uri" : "https://maps.gstatic.com/mapfiles/place_api/icons/v2/generic_pinlet",
+         "name" : "New York",
+         "photos" :
+         [
+            {
+               "height" : 960,
+               "html_attributions" :
+               [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/112130061775859529333\"\u003eConstantin Cilibiu\u003c/a\u003e"
+               ],
+               "photo_reference" : "AWn5SU6KRTWNG6Ry2o078L0t0yqVcr2LdkPQaKCYEWuHua-7_dp4V-ZujaKeVvfO8Durq54ov1-mm8hmKZJFDfPtY-O0-2K658xMSgVeJRpK2VG1xrXFcj8Mhb4mqUf8aIS3PceJNE69aYMX6LCMKDDQ_MTM6gb2tbjdtwB66iIv2Rwz-aAxxfk1XdWDYQApVpZT2glqYdNN_SpPQLfcfdGAlVpkgNblX6OgjrnkOaZB8z4-H6wQLsDf9Dk7ZSxEKxsIJ-SmauZwlNNI0-WBq8fxzpOMh9PaNjKXzLArh9CvHouYQbtZd_OnvZhz3hAqxqYInuXscxvE9qiWM6HbXQMlerlqcNPgq5Me_Y0V7T8RdT2c9sHMcAx0Vwgm7qt72f1pQl2IGE4q9FMP-9XVZ9v27FP1cPqlj8yqJHk4LD2g9bHbEMzs0sgdOqZJVjyzGvm4409aaXt0tqzcAo_3z9aAPlt0NVm1W8Gff0uhpX8IxrRmmIdSe7VyeCw_DTO4LIy_UaqyQQQ-Yuv_sV8RUtb2qHn6GsmTX03LX2YyXniPm1enxJCFRxkh4HYfB6JD1JlwpxUFpveNPdWv1a4-vuyeiEWNhXDKxeUzymBJhslZTBCAetGdHXT8DPACe5Ic-O_5g0LQ3PY9",
+               "width" : 739
+            }
+         ],
+         "place_id" : "ChIJOwg_06VPwokRYv534QaPC8g",
+         "reference" : "ChIJOwg_06VPwokRYv534QaPC8g",
+         "scope" : "GOOGLE",
+         "types" :
+         [
+            "locality",
+            "political"
+         ],
+         "vicinity" : "New York"
+      },
+      {
+         "business_status" : "OPERATIONAL",
+         "geometry" :
+         {
+            "location" :
+            {
+               "lat" : 40.7564251,
+               "lng" : -73.9855534
+            },
+            "viewport" :
+            {
+               "northeast" :
+               {
+                  "lat" : 40.7577306802915,
+                  "lng" : -73.9841880197085
+               },
+               "southwest" :
+               {
+                  "lat" : 40.7550327197085,
+                  "lng" : -73.9868859802915
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png",
+         "icon_background_color" : "#909CE1",
+         "icon_mask_base_uri" : "https://maps.gstatic.com/mapfiles/place_api/icons/v2/hotel_pinlet",
+         "international_phone_number" : "+1 212-869-1212",
+         "name" : "Casablanca Hotel",
+         "opening_hours" :
+         {
+            "open_now" : true
+         },
+         "photos" :
+         [
+            {
+               "height" : 4480,
+               "html_attributions" :
+               [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/113800946765120617622\"\u003eCasablanca Hotel by Library Hotel Collection\u003c/a\u003e"
+               ],
+               "photo_reference" : "AWn5SU5rDdtF5UP27_DGktfRQKALFMx5exsxkO0dcvy775SjcvaRlwlqa-ByxNeDU00X5CUQyyybLk2B20agsoWCMlGQC-xphZ06E8vB20LkNS_E51cckXZ5Jyic21kxrHt4KXlyoRGV1oxU3214A_jCT0qB8nAq-1wfL_6Tkx8NAmslGQOrIqaENMD0Uvf3IH9HYgPGH5ggpiASETA1RMedcYEUxcMmgt_-uqfjtuiuA-JKXdAYKe8DX3RJdkQORGugrRn2l94IYiujGtQT_ZxuCNibSsNRlaPoS8FRU6RZOtoJVOmu8JhUVkk3OFWIcmrWje9mu4695uo",
+               "width" : 6719
+            }
+         ],
+         "place_id" : "ChIJZ6wMJFVYwokRfoSIFactWm0",
+         "plus_code" :
+         {
+            "compound_code" : "Q247+HQ New York, NY, USA",
+            "global_code" : "87G8Q247+HQ"
+         },
+         "rating" : 4.7,
+         "reference" : "ChIJZ6wMJFVYwokRfoSIFactWm0",
+         "scope" : "GOOGLE",
+         "types" :
+         [
+            "lodging",
+            "point_of_interest",
+            "establishment"
+         ],
+         "user_ratings_total" : 603,
+         "vicinity" : "147 West 43rd Street, New York"
+      },
+      {
+         "business_status" : "OPERATIONAL",
+         "geometry" :
+         {
+            "location" :
+            {
+               "lat" : 40.7565183,
+               "lng" : -73.9846017
+            },
+            "viewport" :
+            {
+               "northeast" :
+               {
+                  "lat" : 40.75793963029149,
+                  "lng" : -73.9831447697085
+               },
+               "southwest" :
+               {
+                  "lat" : 40.75524166970849,
+                  "lng" : -73.98584273029151
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png",
+         "icon_background_color" : "#909CE1",
+         "icon_mask_base_uri" : "https://maps.gstatic.com/mapfiles/place_api/icons/v2/hotel_pinlet",
+         "international_phone_number" : "+1 212-764-6200",
+         "name" : "The Chatwal - The Unbound Collection by Hyatt",
+         "photos" :
+         [
+            {
+               "height" : 320,
+               "html_attributions" :
+               [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/102410255199938987362\"\u003eThe Chatwal - The Unbound Collection by Hyatt\u003c/a\u003e"
+               ],
+               "photo_reference" : "AWn5SU7PRn0RvpC8c00eWMjsovUOmNbm7n-oCC__1epcutML8HmfSTiEX2fHMd4yV_0k41-gl8ZlUj0z29LfTheCeKmuryfVES1sEt83jf_chnaebCAMK3Pd73U4orTKctW5cn4HK3RvgpkOyEFakyaWw0d5ZbhV5Ue0nLFEbizFc17pi5NUFc59eBVxtyAZcDIe4_5JUdyWI9cK1-1msHYmSo0KolnQYVapYOsGMuXarfJlrnUjckuIJ9bjhZOY5j62PZri-zPnI03BOW5ucsKgTXRSK9R2whXyoJ1PaHw0wBGXXScdj7NXXHT0cvN3FtWFzgtlAcus5pM",
+               "width" : 480
+            }
+         ],
+         "place_id" : "ChIJ613balVYwokR2Sd7fEqauZs",
+         "plus_code" :
+         {
+            "compound_code" : "Q248+J5 New York, NY, USA",
+            "global_code" : "87G8Q248+J5"
+         },
+         "price_level" : 4,
+         "rating" : 4.6,
+         "reference" : "ChIJ613balVYwokR2Sd7fEqauZs",
+         "scope" : "GOOGLE",
+         "types" :
+         [
+            "lodging",
+            "point_of_interest",
+            "establishment"
+         ],
+         "user_ratings_total" : 414,
+         "vicinity" : "130 West 44th Street, New York"
+      },
+      {
+         "business_status" : "OPERATIONAL",
+         "geometry" :
+         {
+            "location" :
+            {
+               "lat" : 40.75643159999999,
+               "lng" : -73.98428679999999
+            },
+            "viewport" :
+            {
+               "northeast" :
+               {
+                  "lat" : 40.7578420802915,
+                  "lng" : -73.98286206970847
+               },
+               "southwest" :
+               {
+                  "lat" : 40.7551441197085,
+                  "lng" : -73.9855600302915
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png",
+         "icon_background_color" : "#909CE1",
+         "icon_mask_base_uri" : "https://maps.gstatic.com/mapfiles/place_api/icons/v2/hotel_pinlet",
+         "international_phone_number" : "+1 212-710-7000",
+         "name" : "Aura Hotel Times Square",
+         "photos" :
+         [
+            {
+               "height" : 5760,
+               "html_attributions" :
+               [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/106425295592235038947\"\u003eAura Hotel Times Square\u003c/a\u003e"
+               ],
+               "photo_reference" : "AWn5SU6Ml_iWyfRjpan-OqZzxdWat2SB51fZv_GhuvoIeKefbFkwK5iAgw7Zl57VPoLRj-2aXIDugx4XWNIfgt-E2gS74J-rvdrFIIBMgp7SkkW0tEf76wvINC-ZoM9zt5wyyOrs99dKDBe8JVfH7JEHIvQfkG3_CRH46FnzCVej-XvTyDv3HuWpu_EzFHJP6B7ZrNgsmYufgzml1M-N7-fYYMJycVDl7aHMSB_5kn2NA0Svovr7moZYmHGL_3KgqtpALtpIQnijBukwiJ05N-yS3Sp5va2xqWGiUe2-TFY4zxN883fWFZxgTbGOA76ITfrOfS6bySNjCBo",
+               "width" : 8640
+            }
+         ],
+         "place_id" : "ChIJWZVoalVYwokRiKS594qHz1g",
+         "plus_code" :
+         {
+            "compound_code" : "Q248+H7 New York, NY, USA",
+            "global_code" : "87G8Q248+H7"
+         },
+         "rating" : 3.8,
+         "reference" : "ChIJWZVoalVYwokRiKS594qHz1g",
+         "scope" : "GOOGLE",
+         "types" :
+         [
+            "lodging",
+            "clothing_store",
+            "store",
+            "point_of_interest",
+            "establishment"
+         ],
+         "user_ratings_total" : 2255,
+         "vicinity" : "120 West 44th Street, New York"
+      },
+      {
+         "business_status" : "OPERATIONAL",
+         "geometry" :
+         {
+            "location" :
+            {
+               "lat" : 40.756511,
+               "lng" : -73.984641
+            },
+            "viewport" :
+            {
+               "northeast" :
+               {
+                  "lat" : 40.7579611802915,
+                  "lng" : -73.9832242197085
+               },
+               "southwest" :
+               {
+                  "lat" : 40.7552632197085,
+                  "lng" : -73.98592218029151
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+         "icon_background_color" : "#FF9E67",
+         "icon_mask_base_uri" : "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+         "international_phone_number" : "+1 212-997-5262",
+         "name" : "The Lambs Club",
+         "opening_hours" :
+         {
+            "open_now" : false
+         },
+         "photos" :
+         [
+            {
+               "height" : 2801,
+               "html_attributions" :
+               [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/111882812251426825707\"\u003eGlen Mc Call\u003c/a\u003e"
+               ],
+               "photo_reference" : "AWn5SU6iL_ptmPF0RbwSnzy3CBq-_k9K72eQWbgwaV4RXvFepsFikoHdNUUQ1dWipaw9KxGBdWqHFU5xkp6j2JqBC1U1BqWi3zRX15jGMIGr_m2M65gFwKOZoa7K19Z9DQ1NH4J-QpAIzE1PH783-794M-GUREi3Jr-uFuEyQwHWYpFxXSZ2StK5gOsn1XHwXcmDmEB7GuA28INsx4G2xoMp63raT0PD2paxk6az5Ewnz7ToSseYNSzGKeX3T4QP51nTALHx4MnmE7M03wn4opcFHEvluHT88peIBScQZ2xjWElBLFLrBqz--pAOu1zslCKDoAM3TzWri0Fu6DvxBfseZevbwr98G-8rqmHD9iad-Y5YOvukkSM_5cOdMlSq490KJm0pjLBmBBkP5HpJEsD04Nm7fsRFONUqlICwubczAYm6U54su6bORoJJZzgX21qtPGE6fJ7a_FYfBP7FEkuHyqV8wKJC3N8R24S1pQ7yQ4i9rEdMkqZ1dGVLHbGrIGWbAxI54NFhqNmsJoAime91XLxcDtxJZ4r1Y2K2qhbqalD10Df7LSxFTKxASiDvlbV9wakHxrVrdI2QAO05jzbaPve7o2a6hyNfJ_16nDfCtgI_HQIwPuvdbr3GaVMuWa-qdkb3eHwUD3m9X7sTNzUy8w",
+               "width" : 2540
+            }
+         ],
+         "place_id" : "ChIJu0soFVVYwokRArPqt2VGdJs",
+         "plus_code" :
+         {
+            "compound_code" : "Q248+J4 New York, NY, USA",
+            "global_code" : "87G8Q248+J4"
+         },
+         "price_level" : 3,
+         "rating" : 4.4,
+         "reference" : "ChIJu0soFVVYwokRArPqt2VGdJs",
+         "scope" : "GOOGLE",
+         "types" :
+         [
+            "bar",
+            "restaurant",
+            "food",
+            "point_of_interest",
+            "establishment"
+         ],
+         "user_ratings_total" : 803,
+         "vicinity" : "132 West 44th Street, New York"
+      },
+      {
+         "business_status" : "OPERATIONAL",
+         "geometry" :
+         {
+            "location" :
+            {
+               "lat" : 40.7560527,
+               "lng" : -73.98452999999999
+            },
+            "viewport" :
+            {
+               "northeast" :
+               {
+                  "lat" : 40.7573646802915,
+                  "lng" : -73.9832692697085
+               },
+               "southwest" :
+               {
+                  "lat" : 40.7546667197085,
+                  "lng" : -73.98596723029151
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/generic_business-71.png",
+         "icon_background_color" : "#13B5C7",
+         "icon_mask_base_uri" : "https://maps.gstatic.com/mapfiles/place_api/icons/v2/generic_pinlet",
+         "international_phone_number" : "+1 212-997-6661",
+         "name" : "The Town Hall",
+         "opening_hours" :
+         {
+            "open_now" : false
+         },
+         "photos" :
+         [
+            {
+               "height" : 1513,
+               "html_attributions" :
+               [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/108646497838267021459\"\u003eThe Town Hall\u003c/a\u003e"
+               ],
+               "photo_reference" : "AWn5SU5sOnRSWMaMEC7kyRuGGIe2Lg68IrovVlPGx9Adv5UcGhJUDYkRvhlrP-4do9mj5QiytRZeK0EbFx_t74MbHDDYVN3rNfWOqm8Y5XL2WD9rCY4lRmNm7OGWUc8h1hJfV7miu07NQ5OC2-YGlH7katcrRzCmA66qhyNN28pwUj3sSbyrqfkZ2p3TaUjo2Z0hpfa4lY05UqnG78-uup_i_XL0ff3VBIfQYXGdClu-J_p6hdhHojowz_REt6XGt_GN3Uc2-YYA0fQ138vK9w6cFhXldL8aFRajlv6aJI4o10sa6XaYNB_puVDg9LnPNIda-J3e9xdL5Us",
+               "width" : 2688
+            }
+         ],
+         "place_id" : "ChIJc4_aOVVYwokRtXeQnWGC9RA",
+         "plus_code" :
+         {
+            "compound_code" : "Q248+C5 New York, NY, USA",
+            "global_code" : "87G8Q248+C5"
+         },
+         "rating" : 4.5,
+         "reference" : "ChIJc4_aOVVYwokRtXeQnWGC9RA",
+         "scope" : "GOOGLE",
+         "types" :
+         [
+            "point_of_interest",
+            "establishment"
+         ],
+         "user_ratings_total" : 2598,
+         "vicinity" : "123 West 43rd Street, New York"
+      },
+      {
+         "business_status" : "OPERATIONAL",
+         "geometry" :
+         {
+            "location" :
+            {
+               "lat" : 40.75586759999999,
+               "lng" : -73.9849002
+            },
+            "viewport" :
+            {
+               "northeast" :
+               {
+                  "lat" : 40.75729783029149,
+                  "lng" : -73.98351536970848
+               },
+               "southwest" :
+               {
+                  "lat" : 40.75459986970849,
+                  "lng" : -73.98621333029149
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/generic_business-71.png",
+         "icon_background_color" : "#13B5C7",
+         "icon_mask_base_uri" : "https://maps.gstatic.com/mapfiles/place_api/icons/v2/generic_pinlet",
+         "international_phone_number" : "+1 212-719-1300",
+         "name" : "Stephen Sondheim Theatre",
+         "opening_hours" :
+         {
+            "open_now" : false
+         },
+         "photos" :
+         [
+            {
+               "height" : 3024,
+               "html_attributions" :
+               [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/112479450810378939623\"\u003eJie Huang\u003c/a\u003e"
+               ],
+               "photo_reference" : "AWn5SU46s1kPhNPAOn5RBT2vYn0591TRcG39Yx7JhLt4tS8hfatbxor95aYWFMasTip2lVO0CkXddEamW1IhgTPIbVMB0sguD_b39G91khD8KW20ObJFhE4-ilsQcKQJB9ELvIpaoVi5vlXnE59rTJPOCyz58k9saACLAr-H-aKsW42iTD5kJDYZ6dlADNqgoCzZ7HHLO5plVOfW3svX3FIXvQyBATV_726QtgrhyycB2D8P8RIlIJg25NtKfij3xUeVlbO_XZLgLWjg8NZyy83CXl3P60ePWXWfjbSJjSa3qJSNB_UZsoNiTFRxPt5DVSm7fb0C2K012nBR77fGv95JXVuZD6e5hTy651oLFj4OoVN6qZIuBWUJn7UidN_VD7QBP4-2r0ihG-6y5H7TcFzLrvNQbrVNUV-Cf4X2QjLBLgoLQ3hJRpvxK-yQzysR5aWFcmMo9UdBB6hSq5DXmi3q__Uv2qy6JM_38YWQpnazEZvX_oPFIde6uL1mv7B8AUsCoqycU-F9ZDpts6nu6covcNMAxYTcr4TvCvlAx-KHeM-0g1g-lcy9Mq6anpfONP67-5KhHu4dl-zEy0b2cp-YjqWlSzSyd873l7CM-V0WBhyR1FzTSqjL4vQl4Sjn-2EL1E7eZprBNnrhqlCFkfYZflY_k14",
+               "width" : 4032
+            }
+         ],
+         "place_id" : "ChIJv2zhJFVYwokRUvyHqbRD11Y",
+         "plus_code" :
+         {
+            "compound_code" : "Q248+82 New York, NY, USA",
+            "global_code" : "87G8Q248+82"
+         },
+         "rating" : 4.7,
+         "reference" : "ChIJv2zhJFVYwokRUvyHqbRD11Y",
+         "scope" : "GOOGLE",
+         "types" :
+         [
+            "point_of_interest",
+            "establishment"
+         ],
+         "user_ratings_total" : 2680,
+         "vicinity" : "124 West 43rd Street, New York"
+      },
+      {
+         "business_status" : "OPERATIONAL",
+         "geometry" :
+         {
+            "location" :
+            {
+               "lat" : 40.7567841,
+               "lng" : -73.98512830000001
+            },
+            "viewport" :
+            {
+               "northeast" :
+               {
+                  "lat" : 40.75822478029149,
+                  "lng" : -73.98372816970848
+               },
+               "southwest" :
+               {
+                  "lat" : 40.75552681970849,
+                  "lng" : -73.98642613029149
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+         "icon_background_color" : "#FF9E67",
+         "icon_mask_base_uri" : "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+         "international_phone_number" : "+1 212-921-9494",
+         "name" : "Virgil's Real BBQ - NYC",
+         "opening_hours" :
+         {
+            "open_now" : true
+         },
+         "photos" :
+         [
+            {
+               "height" : 3840,
+               "html_attributions" :
+               [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/101723252904618252244\"\u003eVirgil&#39;s Real BBQ - NYC\u003c/a\u003e"
+               ],
+               "photo_reference" : "AWn5SU4F9381-tMcrEulzDYVCTRN6bKqQ2CKH_ZOa0mSO9f0KVRoVO49Vv9ybkXGsPcKqYbVRab7oXmiSz3UDjMDpljtNK-PDhjn3_ZWAP-KrIYMVs5BTNdMzlD81lnjYxhRZevKxRd5gKKgD3JOr_IVaMX8GpF9mCtKGz4Bn1edu3-eVedgs7eoDFEjRIkGuZU1j6lcC51nx_TaxDlt9e1q9hCj6PwMsJ18nZM3yKBsrkyWzQXKEDBY2VTzS8zyo_BCIboPRj1G36-FRrbzsBvTX2z0JTsrCAuMgWV5gHJ3Ckrnwu0AX1G-0MwoJVwJ6nnAOgK9nzusCwY",
+               "width" : 5760
+            }
+         ],
+         "place_id" : "ChIJNe_8fqtz5okR_V-vTEVkjqs",
+         "plus_code" :
+         {
+            "compound_code" : "Q247+PW New York, NY, USA",
+            "global_code" : "87G8Q247+PW"
+         },
+         "price_level" : 2,
+         "rating" : 4.3,
+         "reference" : "ChIJNe_8fqtz5okR_V-vTEVkjqs",
+         "scope" : "GOOGLE",
+         "types" :
+         [
+            "restaurant",
+            "food",
+            "point_of_interest",
+            "establishment"
+         ],
+         "user_ratings_total" : 5555,
+         "vicinity" : "152 West 44th Street, New York"
+      },
+      {
+         "business_status" : "OPERATIONAL",
+         "geometry" :
+         {
+            "location" :
+            {
+               "lat" : 40.7562822,
+               "lng" : -73.9860113
+            },
+            "viewport" :
+            {
+               "northeast" :
+               {
+                  "lat" : 40.7577632802915,
+                  "lng" : -73.98478326970849
+               },
+               "southwest" :
+               {
+                  "lat" : 40.75506531970851,
+                  "lng" : -73.98748123029151
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/generic_business-71.png",
+         "icon_background_color" : "#7B9EB0",
+         "icon_mask_base_uri" : "https://maps.gstatic.com/mapfiles/place_api/icons/v2/generic_pinlet",
+         "international_phone_number" : "+1 212-286-2860",
+         "name" : "Paul Chapman",
+         "opening_hours" :
+         {
+            "open_now" : false
+         },
+         "place_id" : "ChIJL4_i11RYwokRFz8bgwd9s_g",
+         "plus_code" :
+         {
+            "compound_code" : "Q247+GH New York, NY, USA",
+            "global_code" : "87G8Q247+GH"
+         },
+         "rating" : 4,
+         "reference" : "ChIJL4_i11RYwokRFz8bgwd9s_g",
+         "scope" : "GOOGLE",
+         "types" :
+         [
+            "point_of_interest",
+            "establishment"
+         ],
+         "user_ratings_total" : 1,
+         "vicinity" : "4 Times Square, New York"
+      },
+      {
+         "business_status" : "OPERATIONAL",
+         "geometry" :
+         {
+            "location" :
+            {
+               "lat" : 40.75617359999999,
+               "lng" : -73.9846328
+            },
+            "viewport" :
+            {
+               "northeast" :
+               {
+                  "lat" : 40.75743618029149,
+                  "lng" : -73.9833469197085
+               },
+               "southwest" :
+               {
+                  "lat" : 40.7547382197085,
+                  "lng" : -73.9860448802915
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+         "icon_background_color" : "#FF9E67",
+         "icon_mask_base_uri" : "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+         "international_phone_number" : "+1 212-768-0200",
+         "name" : "BXL Cafe",
+         "opening_hours" :
+         {
+            "open_now" : true
+         },
+         "photos" :
+         [
+            {
+               "height" : 3024,
+               "html_attributions" :
+               [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/113150023093446646339\"\u003eАнтон Шайкин\u003c/a\u003e"
+               ],
+               "photo_reference" : "AWn5SU7SffjhcDsA5fSvt1xfwRwY3JPPr9UHG0uRG9Ikq55KbmTubIwzqbWLDiiCgIaTeE2su6zBAIS7-eydGbru_62vOx_gwQJBSAF1qJKZDLBiNmmqVtHMKbY368DeiTRN_jxaku1HpGkLo9EI4V1QBW3GFFSoJXaDAyNaxt-XGB7FPa24zHRcC1E09VAwE9hAp8Nc-DLXIDvdcWAiAPoMygYNB9Q4bAZ9AQtIqr7F4vz2rrQc5fplnUEGk-xv0BK2giuxv9DDM1nBB8yo3cLRysWxug6Cx2WZhbzi0pWxUC8VGPEGZGV1N5rPb15sGVJFjp-9LeQaST5NKLsH1cCg_DCtrRgqDgbwahL3f6KUYf1ywjG6eJUSjDPpdFGS7J4gc527HcSwZuWD6oP52NCSS9yfshyb0Uik025zVDScNeHqOaf41yPtCANYs9KxM9YkkHaLPxim2e6g7JveQ0eoeHP-CwW7lrV74eL1RrBx0NHfK6fB_0gOcLyOwQSuLnR5M-pRcKyG9QQfXwd-7KBUMfEzagV3qk5LJbvsm6SDTOUda4_DVyWquydjQ_Hd4gGNe611a96CPsNo56p09NI_LSWlgVZftQhMC52qVXcrWEQJTc9e1RfDfwXuY-QWFHwfkMBqkI7ZQZ-ym5o92_MYFuwyNOg",
+               "width" : 4032
+            }
+         ],
+         "place_id" : "ChIJDUW-a1VYwokR4XGhIeW6Dao",
+         "plus_code" :
+         {
+            "compound_code" : "Q248+F4 New York, NY, USA",
+            "global_code" : "87G8Q248+F4"
+         },
+         "price_level" : 2,
+         "rating" : 4.4,
+         "reference" : "ChIJDUW-a1VYwokR4XGhIeW6Dao",
+         "scope" : "GOOGLE",
+         "types" :
+         [
+            "restaurant",
+            "food",
+            "point_of_interest",
+            "establishment"
+         ],
+         "user_ratings_total" : 1595,
+         "vicinity" : "125 West 43rd Street apt 3b, New York"
+      },
+      {
+         "business_status" : "OPERATIONAL",
+         "geometry" :
+         {
+            "location" :
+            {
+               "lat" : 40.75605709999999,
+               "lng" : -73.98577539999999
+            },
+            "viewport" :
+            {
+               "northeast" :
+               {
+                  "lat" : 40.75754943029149,
+                  "lng" : -73.98433761970848
+               },
+               "southwest" :
+               {
+                  "lat" : 40.75485146970849,
+                  "lng" : -73.9870355802915
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/generic_business-71.png",
+         "icon_background_color" : "#7B9EB0",
+         "icon_mask_base_uri" : "https://maps.gstatic.com/mapfiles/place_api/icons/v2/generic_pinlet",
+         "international_phone_number" : "+1 212-735-3000",
+         "name" : "Skadden Arps Slate Meagher: Kadet Samuel",
+         "place_id" : "ChIJL4_i11RYwokRuDf7I7Taae0",
+         "rating" : 4,
+         "reference" : "ChIJL4_i11RYwokRuDf7I7Taae0",
+         "scope" : "GOOGLE",
+         "types" :
+         [
+            "lawyer",
+            "point_of_interest",
+            "establishment"
+         ],
+         "user_ratings_total" : 11,
+         "vicinity" : "4 Times Square #24, New York"
+      },
+      {
+         "business_status" : "OPERATIONAL",
+         "geometry" :
+         {
+            "location" :
+            {
+               "lat" : 40.7560827,
+               "lng" : -73.98572659999999
+            },
+            "viewport" :
+            {
+               "northeast" :
+               {
+                  "lat" : 40.7575622302915,
+                  "lng" : -73.9843261197085
+               },
+               "southwest" :
+               {
+                  "lat" : 40.7548642697085,
+                  "lng" : -73.9870240802915
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/generic_business-71.png",
+         "icon_background_color" : "#7B9EB0",
+         "icon_mask_base_uri" : "https://maps.gstatic.com/mapfiles/place_api/icons/v2/generic_pinlet",
+         "international_phone_number" : "+1 212-735-2032",
+         "name" : "Berman Jeremy A",
+         "place_id" : "ChIJL4_i11RYwokRjAgJXFN3etg",
+         "plus_code" :
+         {
+            "compound_code" : "Q247+CP New York, NY, USA",
+            "global_code" : "87G8Q247+CP"
+         },
+         "reference" : "ChIJL4_i11RYwokRjAgJXFN3etg",
+         "scope" : "GOOGLE",
+         "types" :
+         [
+            "lawyer",
+            "point_of_interest",
+            "establishment"
+         ],
+         "vicinity" : "4 Times Square #24, New York"
+      },
+      {
+         "business_status" : "OPERATIONAL",
+         "geometry" :
+         {
+            "location" :
+            {
+               "lat" : 40.75605709999999,
+               "lng" : -73.98577539999999
+            },
+            "viewport" :
+            {
+               "northeast" :
+               {
+                  "lat" : 40.75754943029149,
+                  "lng" : -73.98433761970848
+               },
+               "southwest" :
+               {
+                  "lat" : 40.75485146970849,
+                  "lng" : -73.9870355802915
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/generic_business-71.png",
+         "icon_background_color" : "#7B9EB0",
+         "icon_mask_base_uri" : "https://maps.gstatic.com/mapfiles/place_api/icons/v2/generic_pinlet",
+         "international_phone_number" : "+1 212-735-3000",
+         "name" : "Skadden Arps Slate Meagher: Easton Richard L",
+         "place_id" : "ChIJL4_i11RYwokRPNc7jB750S8",
+         "reference" : "ChIJL4_i11RYwokRPNc7jB750S8",
+         "scope" : "GOOGLE",
+         "types" :
+         [
+            "lawyer",
+            "point_of_interest",
+            "establishment"
+         ],
+         "vicinity" : "4 Times Square #24, New York"
+      },
+      {
+         "business_status" : "OPERATIONAL",
+         "geometry" :
+         {
+            "location" :
+            {
+               "lat" : 40.7560828,
+               "lng" : -73.9857265
+            },
+            "viewport" :
+            {
+               "northeast" :
+               {
+                  "lat" : 40.75756228029149,
+                  "lng" : -73.9843261197085
+               },
+               "southwest" :
+               {
+                  "lat" : 40.7548643197085,
+                  "lng" : -73.9870240802915
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/generic_business-71.png",
+         "icon_background_color" : "#7B9EB0",
+         "icon_mask_base_uri" : "https://maps.gstatic.com/mapfiles/place_api/icons/v2/generic_pinlet",
+         "international_phone_number" : "+1 212-735-3000",
+         "name" : "Skadden Arps Slate Meagher: Fox Charles M",
+         "place_id" : "ChIJL4_i11RYwokREpHdmXpauz0",
+         "plus_code" :
+         {
+            "compound_code" : "Q247+CP New York, NY, USA",
+            "global_code" : "87G8Q247+CP"
+         },
+         "reference" : "ChIJL4_i11RYwokREpHdmXpauz0",
+         "scope" : "GOOGLE",
+         "types" :
+         [
+            "lawyer",
+            "point_of_interest",
+            "establishment"
+         ],
+         "vicinity" : "4 Times Square #24, New York"
+      },
+      {
+         "business_status" : "OPERATIONAL",
+         "geometry" :
+         {
+            "location" :
+            {
+               "lat" : 40.75605709999999,
+               "lng" : -73.98577539999999
+            },
+            "viewport" :
+            {
+               "northeast" :
+               {
+                  "lat" : 40.75754943029149,
+                  "lng" : -73.98433761970848
+               },
+               "southwest" :
+               {
+                  "lat" : 40.75485146970849,
+                  "lng" : -73.9870355802915
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/generic_business-71.png",
+         "icon_background_color" : "#7B9EB0",
+         "icon_mask_base_uri" : "https://maps.gstatic.com/mapfiles/place_api/icons/v2/generic_pinlet",
+         "international_phone_number" : "+1 212-735-3000",
+         "name" : "Skadden Arps Slate Meagher: Crawford Gary E",
+         "place_id" : "ChIJL4_i11RYwokRd_2c40ZyVvo",
+         "reference" : "ChIJL4_i11RYwokRd_2c40ZyVvo",
+         "scope" : "GOOGLE",
+         "types" :
+         [
+            "lawyer",
+            "point_of_interest",
+            "establishment"
+         ],
+         "vicinity" : "4 Times Square #24, New York"
+      },
+      {
+         "business_status" : "OPERATIONAL",
+         "geometry" :
+         {
+            "location" :
+            {
+               "lat" : 40.75605709999999,
+               "lng" : -73.98577539999999
+            },
+            "viewport" :
+            {
+               "northeast" :
+               {
+                  "lat" : 40.75754943029149,
+                  "lng" : -73.98433761970848
+               },
+               "southwest" :
+               {
+                  "lat" : 40.75485146970849,
+                  "lng" : -73.9870355802915
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/generic_business-71.png",
+         "icon_background_color" : "#7B9EB0",
+         "icon_mask_base_uri" : "https://maps.gstatic.com/mapfiles/place_api/icons/v2/generic_pinlet",
+         "international_phone_number" : "+1 212-735-3000",
+         "name" : "Rosen Matthew A",
+         "place_id" : "ChIJL4_i11RYwokRZffmP7zme18",
+         "reference" : "ChIJL4_i11RYwokRZffmP7zme18",
+         "scope" : "GOOGLE",
+         "types" :
+         [
+            "lawyer",
+            "point_of_interest",
+            "establishment"
+         ],
+         "vicinity" : "4 Times Square #24, New York"
+      },
+      {
+         "business_status" : "OPERATIONAL",
+         "geometry" :
+         {
+            "location" :
+            {
+               "lat" : 40.7560099,
+               "lng" : -73.9858954
+            },
+            "viewport" :
+            {
+               "northeast" :
+               {
+                  "lat" : 40.75720443029149,
+                  "lng" : -73.9846801197085
+               },
+               "southwest" :
+               {
+                  "lat" : 40.7545064697085,
+                  "lng" : -73.98737808029152
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/generic_business-71.png",
+         "icon_background_color" : "#7B9EB0",
+         "icon_mask_base_uri" : "https://maps.gstatic.com/mapfiles/place_api/icons/v2/generic_pinlet",
+         "international_phone_number" : "+1 212-286-2860",
+         "name" : "Bon Appetit Magazine",
+         "place_id" : "ChIJL4_i11RYwokRAdsijF2fnlk",
+         "plus_code" :
+         {
+            "compound_code" : "Q247+CJ New York, NY, USA",
+            "global_code" : "87G8Q247+CJ"
+         },
+         "rating" : 1,
+         "reference" : "ChIJL4_i11RYwokRAdsijF2fnlk",
+         "scope" : "GOOGLE",
+         "types" :
+         [
+            "point_of_interest",
+            "establishment"
+         ],
+         "user_ratings_total" : 1,
+         "vicinity" : "4 Times Square # 22, New York"
+      },
+      {
+         "business_status" : "OPERATIONAL",
+         "geometry" :
+         {
+            "location" :
+            {
+               "lat" : 40.7555897,
+               "lng" : -73.9853291
+            },
+            "viewport" :
+            {
+               "northeast" :
+               {
+                  "lat" : 40.7568037802915,
+                  "lng" : -73.98395071970849
+               },
+               "southwest" :
+               {
+                  "lat" : 40.7541058197085,
+                  "lng" : -73.98664868029151
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/shopping-71.png",
+         "icon_background_color" : "#4B96F3",
+         "icon_mask_base_uri" : "https://maps.gstatic.com/mapfiles/place_api/icons/v2/shopping_pinlet",
+         "international_phone_number" : "+1 800-880-1077",
+         "name" : "Verizon",
+         "opening_hours" :
+         {
+            "open_now" : false
+         },
+         "photos" :
+         [
+            {
+               "height" : 1373,
+               "html_attributions" :
+               [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/105170431124683218627\"\u003eMarc Gonzalez\u003c/a\u003e"
+               ],
+               "photo_reference" : "AWn5SU75yd7heUxEvO8tpJ1i3-KzTQl_Yaw53dYSuag1q9Z81EN5J5gz0WWM8Jf_TS9H-OK4T25_iRdWWUXUeelGJcU8Bm0VRmnT8Zj6vzpc8MSWuKjqxpg00g-Abbk3zBVznp5wspJlO0-9N-RUzfuIhgPu23cZRkAJHC5ATfiLBSglHpYD3BNQ6hTTrc_gpQruidRGgg9_9io-xO42jbxU8UDKxi9ojrN9fhEbAn4_i3BQoig1Bk6_vZOS0XudvkSVLjJxf_LNXmJ1Bs6Vi8JjCXktAK5U7oe4dEzw60w_1zvH_GLQ8R7pjFd1slRlCnlxO5yOC0Vp0Kz2wCqK7kvjDc6j0rMdpGDA87f5g4lgNEwRW3pOZwP0FoysRHbJqu5Z_-3EtmVxjXZuFs8NgWZOkrTx3T2fsl4tfhfgtSTjVz4uvd_d4EObpT7AcL798yjj5eP6WfETTb9hB75q4_nZD6ucwcVF1FfhRg3KfhKhVh17qiax6vx4scs6EjT9xBIJFe27Miu46v1gRS8y8ptkroGUqOGUIgXgjxxDvoo3Dy4JxI5DE3JrFpHMUqX_P_izUppDHs4N8kSVLot9mmp2Jva4h4DF5Evm14LG7OlfACxZsZfj8seej7ZGAOhbciwY",
+               "width" : 1838
+            }
+         ],
+         "place_id" : "ChIJr-YgyqpZwokRINd9yNRgzOs",
+         "plus_code" :
+         {
+            "compound_code" : "Q247+6V New York, NY, USA",
+            "global_code" : "87G8Q247+6V"
+         },
+         "price_level" : 2,
+         "rating" : 3.3,
+         "reference" : "ChIJr-YgyqpZwokRINd9yNRgzOs",
+         "scope" : "GOOGLE",
+         "types" :
+         [
+            "store",
+            "point_of_interest",
+            "establishment"
+         ],
+         "user_ratings_total" : 317,
+         "vicinity" : "125 West 42nd Street, New York"
+      },
+      {
+         "business_status" : "OPERATIONAL",
+         "geometry" :
+         {
+            "location" :
+            {
+               "lat" : 40.756015,
+               "lng" : -73.985899
+            },
+            "viewport" :
+            {
+               "northeast" :
+               {
+                  "lat" : 40.7572081802915,
+                  "lng" : -73.98468191970849
+               },
+               "southwest" :
+               {
+                  "lat" : 40.7545102197085,
+                  "lng" : -73.9873798802915
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/generic_business-71.png",
+         "icon_background_color" : "#7B9EB0",
+         "icon_mask_base_uri" : "https://maps.gstatic.com/mapfiles/place_api/icons/v2/generic_pinlet",
+         "international_phone_number" : "+1 914-670-3600",
+         "name" : "SS&C Globe Op-Work",
+         "place_id" : "ChIJf1Qu2PlYwokR9Nx8UeDbt5s",
+         "plus_code" :
+         {
+            "compound_code" : "Q247+CJ New York, NY, USA",
+            "global_code" : "87G8Q247+CJ"
+         },
+         "rating" : 5,
+         "reference" : "ChIJf1Qu2PlYwokR9Nx8UeDbt5s",
+         "scope" : "GOOGLE",
+         "types" :
+         [
+            "point_of_interest",
+            "establishment"
+         ],
+         "user_ratings_total" : 5,
+         "vicinity" : "4 Times Square, New York"
+      },
+      {
+         "geometry" :
+         {
+            "location" :
+            {
+               "lat" : 40.7549309,
+               "lng" : -73.9840195
+            },
+            "viewport" :
+            {
+               "northeast" :
+               {
+                  "lat" : 40.77410688375117,
+                  "lng" : -73.95889871560205
+               },
+               "southwest" :
+               {
+                  "lat" : 40.72686854646897,
+                  "lng" : -74.00894884492357
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/geocode-71.png",
+         "icon_background_color" : "#7B9EB0",
+         "icon_mask_base_uri" : "https://maps.gstatic.com/mapfiles/place_api/icons/v2/generic_pinlet",
+         "name" : "Midtown Manhattan",
+         "photos" :
+         [
+            {
+               "height" : 3731,
+               "html_attributions" :
+               [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/111483564916078492645\"\u003eDonny M\u003c/a\u003e"
+               ],
+               "photo_reference" : "AWn5SU72a9YCeHCNVLHguoOlgC1UcR8Z2YeBulBvad1fLrpy9SMAgPyCaADim9y7oO45bc3lf-I4uSIXxyPeQRc76kiAx2NtpUXRNKYswAmp_fDnv1t11SOS-u4yJVQHUwvRYcTHu8zpXX0f7YBX4bQ2dUfRsIES1Mo_x3k9_GEjul28fdaIWb6P6QEHjNofxUGXCkJwuMLgBYqCaa_t1WzN31Aw6YHxyPc7qcctlAVFt7a6uBrLLZpwIjxR7XcsyHd8wkbS_Ejr5vh4aNCf6TT0sepFS68ZEgJmeELzhVuKsiojyReZZ7UPX4fVUdAt15u2Myshl5ASmpRqq6GM4uhNVi0oQnyFs-gTyaMqPe-eMasCxz7zygILyeuZT-4TKFc21axbshlb6_b5E5drrw-rk2efkYlU6kf4cjvMQNivpT73RM9cwzQzWTi-nvKk38tX9D3bKlro1GENGs9sSf-HfCxl78ERa6_-Eoex3Q_a-eGpY_u7h3HB8Zj6psUUP27RdcgZiQZ175fyfqbt_jHP-m_0wLvZx7HO3OOSyqBNwNE1qNR4Z_ZK7fevHahH0x6m9PTASq-cu-EPxngmwj9IvIYhfuz_7WsbbVAaTF7XAXLF3684Y6TjmiqqDDaR7mnrHsIdyoRK",
+               "width" : 2800
+            }
+         ],
+         "place_id" : "ChIJqXwSpAFZwokR28_WgZDMzb4",
+         "reference" : "ChIJqXwSpAFZwokR28_WgZDMzb4",
+         "scope" : "GOOGLE",
+         "types" :
+         [
+            "neighborhood",
+            "political"
+         ],
+         "vicinity" : "Manhattan"
+      }
+   ],
+   "status" : "OK"
+}

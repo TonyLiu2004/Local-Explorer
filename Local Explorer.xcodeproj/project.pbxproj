@@ -6,7 +6,14 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		8BB4B4952EC2E60D00825FEC /* places_sample.json in Resources */ = {isa = PBXBuildFile; fileRef = 8BB4B4942EC2E60200825FEC /* places_sample.json */; };
+		8BB4B4992EC2E8AF00825FEC /* placeDetailsSample.json in Resources */ = {isa = PBXBuildFile; fileRef = 8BB4B4982EC2E8A500825FEC /* placeDetailsSample.json */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
+		8BB4B4942EC2E60200825FEC /* places_sample.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = places_sample.json; sourceTree = "<group>"; };
+		8BB4B4982EC2E8A500825FEC /* placeDetailsSample.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = placeDetailsSample.json; sourceTree = "<group>"; };
 		8BC57A4C2E78B8CF00446319 /* Local Explorer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Local Explorer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -34,6 +41,8 @@
 			children = (
 				8BC57A4E2E78B8CF00446319 /* Local Explorer */,
 				8BC57A4D2E78B8CF00446319 /* Products */,
+				8BB4B4942EC2E60200825FEC /* places_sample.json */,
+				8BB4B4982EC2E8A500825FEC /* placeDetailsSample.json */,
 			);
 			sourceTree = "<group>";
 		};
@@ -109,6 +118,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BB4B4992EC2E8AF00825FEC /* placeDetailsSample.json in Resources */,
+				8BB4B4952EC2E60D00825FEC /* places_sample.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
