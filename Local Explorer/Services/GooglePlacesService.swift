@@ -71,6 +71,31 @@ class GooglePlacesService {
         .resume()
     }
     
+    func fetchPhotoURL(photoReference: String, maxWidth: Int = 400, completion: @escaping (Result<URL, Error>) -> Void) {
+        let urlString = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=\(maxWidth)&photo_reference=\(photoReference)&key=\(apiKey)"
+        guard let url = URL(string: urlString) else { return }
+
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+
+        let task = URLSession.shared.dataTask(with: request) { _, response, error in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+
+            // Google redirects to the real image URL
+            if let httpResponse = response as? HTTPURLResponse,
+               let finalURL = httpResponse.url {
+                completion(.success(finalURL))
+            } else {
+                completion(.failure(NSError(domain: "NoRedirect", code: -1, userInfo: nil)))
+            }
+        }
+        task.resume()
+    }
+
+    
     //Fetches more detailed info about a specific place based on placeId
     func fetchPlace(placeId: String, completion: @escaping (Result<PlaceDetails, Error>) -> Void) {
         let urlString = "https://maps.googleapis.com/maps/api/place/details/json?place_id=\(placeId)&key=\(apiKey)"

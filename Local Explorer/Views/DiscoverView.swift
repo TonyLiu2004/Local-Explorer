@@ -5,19 +5,16 @@
 //  Created by Tony Liu on 10/12/25.
 //
 import SwiftUI
-import Foundation
 import CoreLocation
 
 struct DiscoverView: View {
-//    let googlePlacesJSON: GooglePlacesResponse?
-//    let location: CLLocation
     let locationManager: LocationManager
+    @Environment(\.modelContext) private var modelContext
     @StateObject var allViewModel = GooglePlacesViewModel()
     @StateObject var recommendedViewModel = GooglePlacesViewModel()
     @StateObject var cafesViewModel = GooglePlacesViewModel()
-    
-    @State private var currentLocation: CLLocation?
-    
+
+    @State private var reply = "qwe"
     let options = [
         Option(label: "All", value: "all"),
         Option(label: "Restaurants", value: "restaurant"),
@@ -38,6 +35,7 @@ struct DiscoverView: View {
                         .fontWeight(.bold)
                         .padding(.horizontal)
                         .padding(.top, 16) // adds space from top safe area
+                    
                     //Selectable Boxes
                     SelectableBoxRow(
                         options: options,
@@ -125,7 +123,15 @@ struct HorizontalPlacesList: View {
     }
 }
 
+class MockLocationManager: LocationManager {
+    override init() {
+        super.init()
+        self.userLocation = CLLocation(latitude: 40.758683, longitude: -73.8331742)
+    }
+}
+
 #Preview {
-    ContentView()
+    DiscoverView(locationManager: MockLocationManager())
+        .modelContainer(for: StoredPlaceDetails.self)
 }
 

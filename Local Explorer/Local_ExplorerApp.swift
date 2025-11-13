@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct Local_ExplorerApp: App {
@@ -13,5 +14,6 @@ struct Local_ExplorerApp: App {
         WindowGroup {
             ContentView()
         }
+        .modelContainer(for: StoredPlaceDetails.self)
     }
 }

@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import CoreLocation
+import CoreLocation	
 
 struct PlaceCard: View {
 //    let place: Place
@@ -68,7 +68,11 @@ struct PlaceCard: View {
                 .frame(maxWidth: 300)
             }
             .onAppear {
-                print(place.name, place.place_id)
+//                print(place.name, place.place_id)
+//                if let loc = location {
+//                    print(loc)
+//                    print("========")
+//                }
             }
             .padding([.leading, .trailing], 8)
             
@@ -85,19 +89,36 @@ struct PlaceCard: View {
                 .captionStyle()
                 .padding(.horizontal, 8)
 
-            if let image = viewModel.getPhoto(for: place) {
-                Image(uiImage: image)
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: 360, height: 200)
-                    .clipped()
-                    .cornerRadius(10)
-
+//            if let image = viewModel.getPhoto(for: place) {
+//                Image(uiImage: image)
+//                    .resizable()
+//                    .scaledToFill()
+//                    .frame(width: 360, height: 200)
+//                    .clipped()
+//                    .cornerRadius(10)
+//
+//            } else {
+//                Color.gray
+//                    .frame(width: 360, height: 200)
+//                    .cornerRadius(10)
+//            }
+            if let url = viewModel.getPhotoURL(for: place) {
+                AsyncImage(url: url) { phase in
+                    if let image = phase.image {
+                        image
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 360, height: 200)
+                            .clipped()
+                            .cornerRadius(10)
+                    }
+                } 
             } else {
                 Color.gray
                     .frame(width: 360, height: 200)
                     .cornerRadius(10)
             }
+            
         }
         .padding(.vertical, 8)
         .padding(.horizontal, 8)

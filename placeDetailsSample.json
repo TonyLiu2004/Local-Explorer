@@ -505,5 +505,329 @@
           "vicinity" : "133-35 Roosevelt Ave, Flushing",
           "website" : "http://www.nycfoodcourt.com/",
           "wheelchair_accessible_entrance" : true
-       }
+       },
+       {
+             "address_components" :
+             [
+                {
+                   "long_name" : "120",
+                   "short_name" : "120",
+                   "types" :
+                   [
+                      "street_number"
+                   ]
+                },
+                {
+                   "long_name" : "West 44th Street",
+                   "short_name" : "W 44th St",
+                   "types" :
+                   [
+                      "route"
+                   ]
+                },
+                {
+                   "long_name" : "Manhattan",
+                   "short_name" : "Manhattan",
+                   "types" :
+                   [
+                      "political",
+                      "sublocality",
+                      "sublocality_level_1"
+                   ]
+                },
+                {
+                   "long_name" : "New York",
+                   "short_name" : "New York",
+                   "types" :
+                   [
+                      "locality",
+                      "political"
+                   ]
+                },
+                {
+                   "long_name" : "New York County",
+                   "short_name" : "New York County",
+                   "types" :
+                   [
+                      "administrative_area_level_2",
+                      "political"
+                   ]
+                },
+                {
+                   "long_name" : "New York",
+                   "short_name" : "NY",
+                   "types" :
+                   [
+                      "administrative_area_level_1",
+                      "political"
+                   ]
+                },
+                {
+                   "long_name" : "United States",
+                   "short_name" : "US",
+                   "types" :
+                   [
+                      "country",
+                      "political"
+                   ]
+                },
+                {
+                   "long_name" : "10036",
+                   "short_name" : "10036",
+                   "types" :
+                   [
+                      "postal_code"
+                   ]
+                }
+             ],
+             "adr_address" : "\u003cspan class=\"street-address\"\u003e120 W 44th St\u003c/span\u003e, \u003cspan class=\"locality\"\u003eNew York\u003c/span\u003e, \u003cspan class=\"region\"\u003eNY\u003c/span\u003e \u003cspan class=\"postal-code\"\u003e10036\u003c/span\u003e, \u003cspan class=\"country-name\"\u003eUSA\u003c/span\u003e",
+             "business_status" : "OPERATIONAL",
+             "editorial_summary" :
+             {
+                "language" : "en",
+                "overview" : "A stylish property with an Italian theme offering upscale rooms, free Wi-Fi & a French bistro."
+             },
+             "formatted_address" : "120 W 44th St, New York, NY 10036, USA",
+             "formatted_phone_number" : "(212) 710-7000",
+             "geometry" :
+             {
+                "location" :
+                {
+                   "lat" : 40.7564316,
+                   "lng" : -73.98428679999999
+                },
+                "viewport" :
+                {
+                   "northeast" :
+                   {
+                      "lat" : 40.7578420802915,
+                      "lng" : -73.98286206970847
+                   },
+                   "southwest" :
+                   {
+                      "lat" : 40.7551441197085,
+                      "lng" : -73.9855600302915
+                   }
+                }
+             },
+             "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png",
+             "icon_background_color" : "#909CE1",
+             "icon_mask_base_uri" : "https://maps.gstatic.com/mapfiles/place_api/icons/v2/hotel_pinlet",
+             "international_phone_number" : "+1 212-710-7000",
+             "name" : "Aura Hotel Times Square",
+             "photos" :
+             [
+                {
+                   "height" : 3200,
+                   "html_attributions" :
+                   [
+                      "\u003ca href=\"https://maps.google.com/maps/contrib/106425295592235038947\"\u003eAura Hotel Times Square\u003c/a\u003e"
+                   ],
+                   "photo_reference" : "AWn5SU71e2pmQSNFYuO2gtm_luiDq3lc42r6sRv5QzVQbptSL9eje07FkfXC8PftdKX5aTt24XO59fedlfXA56CZ__jq2PQVT_aeJ9YDDqXg3VW6gv3VdLVK7XdctBheKEggSaG2OTayHwSlBIqtHk2n8Qys_ath8WHqkMbxDow_7OEGHc57fMQffSwjUdcbePbYFVhlMivzP-6tYTthWw-uourFYUeRAtG8eoBUc7LtU6eymWdajtL4mjTxyi4utYOD7j_dgUW4qBwsSCA92sEpyKsH0n_OxrKyoT1snsaua3gbCg",
+                   "width" : 4800
+                },
+                {
+                   "height" : 3200,
+                   "html_attributions" :
+                   [
+                      "\u003ca href=\"https://maps.google.com/maps/contrib/106425295592235038947\"\u003eAura Hotel Times Square\u003c/a\u003e"
+                   ],
+                   "photo_reference" : "AWn5SU5BhSx96yMVfaJJdblpxYuOy-e-TQkkIJosxkLXa81b0FglU1Dghjs72Nppcb_c2rGkMz3YCd5kP7vuaOlx-ouKuSPe5NS8nv1-CY6zwg07Ek-1Q2HDsA99SBLd0xguNHAcYC3kmUImXspAsOCT9SOoq-3sYdI-B-gcYDFc906G5alL6SckrIbP9jZjPsLiDzWYhYq8nTOo2sHcEPid9RbV_HyeK9_Jor4WQT2t2VUL-txSjSXUHdmQXUL-Q6FnTIDivUQObq4tiwSqk10RXAP5U3xQJo9lcW7VwRMg40VQ3w",
+                   "width" : 4800
+                },
+                {
+                   "height" : 2400,
+                   "html_attributions" :
+                   [
+                      "\u003ca href=\"https://maps.google.com/maps/contrib/106425295592235038947\"\u003eAura Hotel Times Square\u003c/a\u003e"
+                   ],
+                   "photo_reference" : "AWn5SU62TJ-I7__imELMVWYl5vsqaNA_PBuWBUFQFL96AwiJWnW-mMPdgOFZ7S2Jl4mc8YOOmc9cs0cW1IJ1L6ImmmtBUOaHoZd1hG3iMD26nJSqejifM9Tn9J6ORxY8RB-MxQBzsoNe1NlKDitLcrZbXioSC0TBi4UPiOjwDzLrxiMg05iamkZML8bZlKbvwErAOe8kHHWnfW0fUKNdQVOcBJHfk_zhKgtUPPJb_4R6T09PTGb7Ramhd1Y6yEy1WUhgZ9sXk9gdorGuY9IqkNpPL3zxOKUguTW1a6Mxa7Dd2uiXhg",
+                   "width" : 3600
+                },
+                {
+                   "height" : 3201,
+                   "html_attributions" :
+                   [
+                      "\u003ca href=\"https://maps.google.com/maps/contrib/106425295592235038947\"\u003eAura Hotel Times Square\u003c/a\u003e"
+                   ],
+                   "photo_reference" : "AWn5SU6B2YE6-zNTf-PrJDcWMdnt2BzVmMroNr7ClNR1rM3TPHwmIhQiqTwzu6Y_4FCqXfVO7Ov_QesAPuu866CZa8G0NvOWZbDSxhOYyeMHKiiAdE4jESwZ4lEFOvZNElO9qOsnRlS4RtcsUA8EslL8pgDKh3DvtGG7S_hKlX-onsTTFQgoKOSj5XaScbVwjMDHXa9bATRATgMMijDoxurKALnfedCwKTaXTeF9KvHkSYfO3-_CgrmWsAOU0MQCADcjc3eQEZCNnfuicCMa5D3lfa2_3xaUFhc4coxgx1-CgPftFw",
+                   "width" : 4800
+                },
+                {
+                   "height" : 3200,
+                   "html_attributions" :
+                   [
+                      "\u003ca href=\"https://maps.google.com/maps/contrib/106425295592235038947\"\u003eAura Hotel Times Square\u003c/a\u003e"
+                   ],
+                   "photo_reference" : "AWn5SU6IIvY35e92XlxOXH3mK-CKAcozywJFdaKDD_sgMmgR3VVVTwL9b-6AFeitzKGpHa6zAXOyYGynYWUuJhZRUbj-apNOh8ZDRYtrY3CkGCk1Iw6M83Rvp5nMrrqx5N2WWZCHZaqp-TXP0TXOdJ7gSlxl86wc-BlfZyimiSY6WWvjE1CctKBeJHziSfYdKmUSL0hAFZqwWBLIRv_9rwIDhgsH_mlrqyPIpObUiql4029tPp4Y77jbOWRjT6KHm3eLLPQdLASJFzIthNs3Czj3d5sTgG___-FJhf7TGeqw9sOgcw",
+                   "width" : 4800
+                },
+                {
+                   "height" : 2400,
+                   "html_attributions" :
+                   [
+                      "\u003ca href=\"https://maps.google.com/maps/contrib/106425295592235038947\"\u003eAura Hotel Times Square\u003c/a\u003e"
+                   ],
+                   "photo_reference" : "AWn5SU4YoXOshcywRbsB2_aPQc3uf2nf-9bajn7XOaOEz3f0HN0EWb0B4qEJ2S3Q9QiESqUnC2DkbLfQVrq2HRd7-ywyiSJRIeKMgaij8BOmPOcd8HuviALR-pqGNhsLXyHcXJls4dfQ2wuN2_AgYKd_Cs_g81YFXqaV3z2dVoy49EqZYnnpTzALQTC2pULM2JWVxmHiBG5S_bjmfB3FnENwJaOf3o6APq0E3vb1pbN_PeMYV87jJJ5uI5g1uAad311A7IvqswisWJV6Wgz_NHukSnK45FQJaSgjTl69vLPnceMabA",
+                   "width" : 3600
+                },
+                {
+                   "height" : 3201,
+                   "html_attributions" :
+                   [
+                      "\u003ca href=\"https://maps.google.com/maps/contrib/106425295592235038947\"\u003eAura Hotel Times Square\u003c/a\u003e"
+                   ],
+                   "photo_reference" : "AWn5SU6F9ZrIZo_9dQVVMkG4l-oW81ImRZqnRmLbiWVU1pZ3dUkF_V5shdt1fjmLzPmyDzSVK3unIRj1ZdbIHvjbmKHVdVzRjkvJ6CgmpOO-lwt5Ulzqq1C-Lgute-mW-w2fix2fnDUBpWVsw-RoEqzpBQD9HSTQwBsPzo4KcoqdW5GS9xtwGLAHQfogAXFZhjUxJ8bMIy5t0yEHnnup8p3G1zpmkNbUOam-uVDefhgZByyUZUfb-c2QoSLZTq3UKgcxnO2oCVfCoCXvXCfVa8TD5k-ugc4G4du5vZOpn5bGPp6BVw",
+                   "width" : 4800
+                },
+                {
+                   "height" : 279,
+                   "html_attributions" :
+                   [
+                      "\u003ca href=\"https://maps.google.com/maps/contrib/103389735916695470123\"\u003eHotel Mela Times Square\u003c/a\u003e"
+                   ],
+                   "photo_reference" : "AWn5SU7LQkFIQl3uVSf0fU5PjbjthCyHiH6elofnpebi1CcoF_crHMZb_KUYHcvMHNhn5VTwT-X90sRXQKixC4OroNpviL7nzBUTP5-f5-hG56aYRBwCrwL6CMn1Yg2vL0ON5Xli53gj9oE7pD5mQHULseGKtCILhHjHC1fRtw-iI281AGwEwcVjmLurm7jewdvq9c8ZBRkscH2gsGN4yPIH1JYzfQC_ScQ5VrhYy4xbuObyrns8KvS_0rEnAXIIOLIjUKUJbay617-CB3OzsZHTZaBZc-4creHyFnVnpVPkdhMohQ",
+                   "width" : 847
+                },
+                {
+                   "height" : 3600,
+                   "html_attributions" :
+                   [
+                      "\u003ca href=\"https://maps.google.com/maps/contrib/106425295592235038947\"\u003eAura Hotel Times Square\u003c/a\u003e"
+                   ],
+                   "photo_reference" : "AWn5SU7BY4wj9YQMeHqB3FHqIMkD5sgo_EdZ1stESY2K7iig80yAx5yHsNfRa2mhofCgIqCcSiKItYHyd1eCzYFbYCcZ_drZ_pdsrxibHxZZJbZdO8ce_UJRD-mDfpoazPWmA3imuJTeQJRqgir6hfcS9OvdZ3vjvIRlVvsX6kI-5gEKLKc_FIpghxRQFV3oBHZjoNuI8xHlLZ1ihrG4dLax2XnQjB6Ovy16D3cYEirFkIGekE1lPQgBw7Jq2iiUQ7ZlFmT2kyQb1tLSjNqXuJJBEiW1LToUmByOvR6-W8VgR9MhoA",
+                   "width" : 2400
+                },
+                {
+                   "height" : 3200,
+                   "html_attributions" :
+                   [
+                      "\u003ca href=\"https://maps.google.com/maps/contrib/106425295592235038947\"\u003eAura Hotel Times Square\u003c/a\u003e"
+                   ],
+                   "photo_reference" : "AWn5SU7YWEyLx_4USP1BgwXUIKQxPSSLfZT4eK48YPOcKNN33gcYai2ZqGmh8DVtopY-SlQLxsZLkC8yGeAWUcY3GE5czM7UWBSUDuIedNG3AB4KkIMEvFKxvfGW4lGi-Mw6I1rZCdVZ2ykhcvrOuW6-OXlXSzTJ9nz27EwaEF56bueza42NX07e8_dGeOAHu_NoShFGdsgEP96aCe8od-llp0VCqqo6Wp2k2Fk8zqpGFi3W_su3MGuvUrht3kU2u9oNyosEZJ8etm-Xyt7jiv4KBRzlBb2phcrpyNPqx0sC0uWnNg",
+                   "width" : 4800
+                }
+             ],
+             "place_id" : "ChIJWZVoalVYwokRiKS594qHz1g",
+             "plus_code" :
+             {
+                "compound_code" : "Q248+H7 New York, NY, USA",
+                "global_code" : "87G8Q248+H7"
+             },
+             "rating" : 3.8,
+             "reference" : "ChIJWZVoalVYwokRiKS594qHz1g",
+             "reviews" :
+             [
+                {
+                   "author_name" : "Emma “Emma” Byron",
+                   "author_url" : "https://www.google.com/maps/contrib/111244072655980466781/reviews",
+                   "language" : "en",
+                   "original_language" : "en",
+                   "profile_photo_url" : "https://lh3.googleusercontent.com/a-/ALV-UjUFQ9nF4EMINFVEoi33ChZBkh1m5D1oa5CmYbR_lbfraVlKf0vbbQ=s128-c0x00000000-cc-rp-mo-ba5",
+                   "rating" : 4,
+                   "relative_time_description" : "in the last week",
+                   "text" : "We stayed here for our honeymoon and wanted everything to be perfect. I’d read a review suggesting to email ahead and request a high floor to avoid street noise, so I did just that. Unfortunately, when we arrived, we were given a room on level 2 facing the street.\n\nMy husband asked if we could move, but the two people at the front desk said it wasn’t possible that night and to try again in the morning. The first night was extremely noisy — even with earplugs, we could hear the street traffic and the air conditioning was quite loud.\n\nThe next morning, we asked again and were told nothing was available that day, but we could move the following day. Thankfully, the new room was much better — larger, quieter, and with super comfy beds. It didn’t have a view, but after three nights of uninterrupted sleep (and no 3 a.m. bin men!), we were very happy with it.\n\nA big thank you to the concierge team who were fantastic and helped us with our luggage during the move.\n\nIn hindsight, I wouldn’t bother emailing ahead — it didn’t seem to make a difference. Overall, once we were in the upgraded room, our stay improved a lot, but the first couple of nights were disappointing.",
+                   "time" : 1762549306,
+                   "translated" : false
+                },
+                {
+                   "author_name" : "M Davis",
+                   "author_url" : "https://www.google.com/maps/contrib/116397530072601069501/reviews",
+                   "language" : "en",
+                   "original_language" : "en",
+                   "profile_photo_url" : "https://lh3.googleusercontent.com/a-/ALV-UjU2Z3OYa-ZSCKeQDCzoAcjIg-g2cuzRZWEmNt74oPa_XolOAwFwCg=s128-c0x00000000-cc-rp-mo-ba3",
+                   "rating" : 3,
+                   "relative_time_description" : "2 weeks ago",
+                   "text" : "First the good- for Manhattan, the room was spacious (we stayed in a suite), clean, and the staff friendly. The Long Room restaurant next door was fantastic.  Now for the not so positive. No microwave or fridge in the room. I am absolutely convinced the thermostat on the wall was strictly for looks. The room was freezing the first night and only warmed up slightly the rest of our stay. The hot water was inconsistent. There is a $40/night resort fee. When I asked at check in what amenities the resort fee covered I was told the WiFi, workout room (see attached pic), and 2 free drinks at the restaurant next door (the only drinks the voucher covered was a house white or red wine or domestic beers).",
+                   "time" : 1761655732,
+                   "translated" : false
+                },
+                {
+                   "author_name" : "Jacob",
+                   "author_url" : "https://www.google.com/maps/contrib/116739048024195037876/reviews",
+                   "language" : "en",
+                   "original_language" : "en",
+                   "profile_photo_url" : "https://lh3.googleusercontent.com/a/ACg8ocJWwYEeuzc4qEUDN8H9oUtdD-NvfCAIUQZmxEht5A-_ykFvKg=s128-c0x00000000-cc-rp-mo",
+                   "rating" : 5,
+                   "relative_time_description" : "a month ago",
+                   "text" : "I liked the experience, the hotel is situated directly at Times Square s you can explore the city the whole day. My room was quiet, tidy, newly renovated and the gym has enough to do a workout. I felt very welcomed from the beginning. Reception was so friendly to let me check in to my room 3h ealier and on your last day you can store your luggage in the hotel to make the kost of your stay. I also got 2 vouchers for welcome drinks in the bar. Breakfast was served by an energetic and super friendly women. You could feel that she likes to host guests. Overall, a good hotel.",
+                   "time" : 1759584788,
+                   "translated" : false
+                },
+                {
+                   "author_name" : "Megan Collins",
+                   "author_url" : "https://www.google.com/maps/contrib/116865000099995338176/reviews",
+                   "language" : "en",
+                   "original_language" : "en",
+                   "profile_photo_url" : "https://lh3.googleusercontent.com/a/ACg8ocJeE9ibdoWtXOhXbqw9b1_9hFC58f3SWeF8P9aEx_ZgURNkwQ=s128-c0x00000000-cc-rp-mo-ba3",
+                   "rating" : 4,
+                   "relative_time_description" : "in the last week",
+                   "text" : "My Mum and I just spent 11 nights here as a big 60th birthday trip, all the way from Australia.\nAs far as the location goes, definitely very central and close to multiple subway lines for adventurws further afield.\n\nMy personal experience regarding price - I secured a Black Friday deal via booking.com almost a year in advance, so paid $6.1k for the 11 nights which was was at least 40% off the regular rate, so all things considered no complaints on my end regarding price or anything.\n\nWe had a room with two beds so plenty of space, and I requested a room away from the street ahead of times so noise was not a problem.\nI will agree with other reviewers regarding the water pressure and fluctuation of water temp - this seemed to be most frequent during ‘busy’ shower times (eg the morning and pre-dinner rushes).\n\nBut that aside, the staff were lovely, and a great location. If you are lucky enough to get a great price as well, all the better!",
+                   "time" : 1762549186,
+                   "translated" : false
+                },
+                {
+                   "author_name" : "D Becker",
+                   "author_url" : "https://www.google.com/maps/contrib/112668069424555029444/reviews",
+                   "language" : "en",
+                   "original_language" : "en",
+                   "profile_photo_url" : "https://lh3.googleusercontent.com/a/ACg8ocLsWWimhgJtBb9hsD7Q7hxI7322Iz_cVKTF1UsbabJNbfH44A=s128-c0x00000000-cc-rp-mo-ba4",
+                   "rating" : 5,
+                   "relative_time_description" : "in the last week",
+                   "text" : "Had a great experience at the Aura hotel. It's well situated near the heart of Times Square and close to Bryant Park. My room was small and clean and completely adequate. The bed was very comfortable. The only thing is that there is no desk/chair so if you're working you'll be doing that in bed.",
+                   "time" : 1762445115,
+                   "translated" : false
+                }
+             ],
+             "secondary_opening_hours" :
+             [
+                {
+                   "open_now" : true,
+                   "periods" :
+                   [
+                      {
+                         "close" :
+                         {
+                            "date" : "2025-11-18",
+                            "day" : 2,
+                            "time" : "2359",
+                            "truncated" : true
+                         },
+                         "open" :
+                         {
+                            "date" : "2025-11-12",
+                            "day" : 3,
+                            "time" : "0000",
+                            "truncated" : true
+                         }
+                      }
+                   ],
+                   "type" : "ACCESS",
+                   "weekday_text" :
+                   [
+                      "Monday: Open 24 hours",
+                      "Tuesday: Open 24 hours",
+                      "Wednesday: Open 24 hours",
+                      "Thursday: Open 24 hours",
+                      "Friday: Open 24 hours",
+                      "Saturday: Open 24 hours",
+                      "Sunday: Open 24 hours"
+                   ]
+                }
+             ],
+             "types" :
+             [
+                "clothing_store",
+                "establishment",
+                "lodging",
+                "point_of_interest",
+                "store"
+             ],
+             "url" : "https://maps.google.com/?cid=6399482626448139400",
+             "user_ratings_total" : 2256,
+             "utc_offset" : -300,
+             "vicinity" : "120 W 44th St, New York",
+             "website" : "https://www.aurahotelnyc.com/",
+             "wheelchair_accessible_entrance" : true
+          }
 ]
