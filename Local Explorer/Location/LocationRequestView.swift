@@ -15,6 +15,11 @@ struct LocationRequestView: View {
             LocationManager.shared.requestLocation()
         }label:{
             Text("Request Location")
+                .foregroundColor(.white)
+                .padding()
+                .frame(maxWidth: .infinity)
+                .background(Color.blue)
+                .cornerRadius(12)		
         }
     }
 }

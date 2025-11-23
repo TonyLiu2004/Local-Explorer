@@ -14,7 +14,6 @@ struct DiscoverView: View {
     @StateObject var recommendedViewModel = GooglePlacesViewModel()
     @StateObject var cafesViewModel = GooglePlacesViewModel()
 
-    @State private var reply = "qwe"
     let options = [
         Option(label: "All", value: "all"),
         Option(label: "Restaurants", value: "restaurant"),
@@ -25,6 +24,9 @@ struct DiscoverView: View {
     ]
     
     @State private var selectedOption: String?
+    @State private var selectedViewModel: GooglePlacesViewModel? = nil
+    @State private var selectedPlace: PlaceDetails? = nil
+
     var body: some View {
         VStack(spacing: 0) {
             ScrollView {
@@ -41,6 +43,7 @@ struct DiscoverView: View {
                         options: options,
                         selectedOption: $selectedOption
                     )
+                    .padding(.horizontal)
                     .onAppear {
                         if selectedOption == nil {
                             selectedOption = options.first?.value
@@ -50,23 +53,72 @@ struct DiscoverView: View {
                     // All Locations
                     if let location = locationManager.userLocation
                     {
-                        HorizontalPlacesList(viewModel: allViewModel, location: location, type: selectedOption)
+                        HorizontalPlacesList(
+                            viewModel: allViewModel,
+                            location: location,
+                            type: selectedOption,
+                            onSelect: { place, vm in
+                                selectedPlace = place
+                                selectedViewModel = vm
+                            }
+                        )
                     
                         // Recommended
                         Text("Recommended for you")
                             .font(.headline)
                             .padding(.horizontal)
-                        HorizontalPlacesList(viewModel: recommendedViewModel, location: location, type: "restaurant")
+                        HorizontalPlacesList(
+                            viewModel: recommendedViewModel,
+                            location: location,
+                            type: "restaurant",
+                            onSelect: { place, vm in
+                                selectedPlace = place
+                                selectedViewModel = vm
+                            }
+                        )
                         
                         // Cafes
                         Text("Cafes")
                             .font(.headline)
                             .padding(.horizontal)
-                        HorizontalPlacesList(viewModel: cafesViewModel, location: location, type: "cafe")
+                        HorizontalPlacesList(
+                            viewModel: cafesViewModel,
+                            location: location,
+                            type: "cafe",
+                            onSelect: { place, vm in
+                                selectedPlace = place
+                                selectedViewModel = vm
+                            }
+                        )
                     }
                 } //end Vstack
                 .padding(.bottom, 32)
             } //end ScrollView
+//            .overlay {
+//                if let place = selectedPlace, let vm = selectedViewModel {
+//                    ZStack
+//                    {
+//                        Color.black.opacity(0.4)
+//                        .ignoresSafeArea()
+//                    }
+//                    
+//                    VStack {
+//                        PlacePopup(
+//                            place: place,
+//                            onClose: {
+//                                withAnimation(.easeOut(duration: 0.5)) {
+//                                    selectedPlace = nil
+//                                }
+//                            },
+//                            viewModel: vm
+//                        )
+//                        Spacer()
+//                    } //end vstack
+//                    .padding(.top, 16)
+//                    .transition(.move(edge: .bottom))
+//                } //end if
+//            } //end overlay
+            .animation(.easeIn(duration: 0.5), value: selectedPlace != nil)
         } //end Vstack
     }// end body
 }
@@ -76,15 +128,28 @@ struct HorizontalPlacesList: View {
     let location: CLLocation
     var type: String? = nil
     @State private var lastLocation: CLLocation?
-
+    var onSelect: (PlaceDetails, GooglePlacesViewModel) -> Void
+    
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             LazyHStack(spacing: 16) {
                 if (viewModel.placeDetailsList.isEmpty) {
-                    PlaceCard(place: PlaceDetails.placeholder, location:location, viewModel: viewModel)
+                    PlaceCard(
+                        place: PlaceDetails.placeholder,
+                        location:location,
+                        onTap: {
+                            onSelect(PlaceDetails.placeholder, viewModel)
+                        },
+                        viewModel: viewModel)
                 } else {
                     ForEach(viewModel.placeDetailsList) { placeDetail in
-                        PlaceCard(place: placeDetail, location: location, viewModel: viewModel)
+                        PlaceCard(
+                            place: placeDetail,
+                            location: location,
+                            onTap: {
+                                onSelect(placeDetail, viewModel)
+                            },
+                            viewModel: viewModel)
                     }
                 }
             }
@@ -130,8 +195,11 @@ class MockLocationManager: LocationManager {
     }
 }
 
-#Preview {
-    DiscoverView(locationManager: MockLocationManager())
-        .modelContainer(for: StoredPlaceDetails.self)
-}
+//#Preview {
+//    DiscoverView(locationManager: MockLocationManager())
+//        .modelContainer(for: StoredPlaceDetails.self)
+//}
 
+#Preview {
+    ContentView()
+}

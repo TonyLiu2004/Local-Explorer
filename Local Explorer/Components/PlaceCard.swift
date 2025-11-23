@@ -12,6 +12,7 @@ struct PlaceCard: View {
 //    let place: Place
     let place: PlaceDetails
     let location: CLLocation?
+    let onTap: () -> Void
     @StateObject var viewModel = GooglePlacesViewModel()
 
     var priceText: String {
@@ -102,17 +103,28 @@ struct PlaceCard: View {
 //                    .frame(width: 360, height: 200)
 //                    .cornerRadius(10)
 //            }
-            if let url = viewModel.getPhotoURL(for: place) {
-                AsyncImage(url: url) { phase in
-                    if let image = phase.image {
-                        image
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: 360, height: 200)
-                            .clipped()
-                            .cornerRadius(10)
+            if let photoURL = viewModel.getPhotoURL(for: place),
+                let url = URL(string: photoURL.absoluteString) {
+                    AsyncImage(url: url) { phase in
+                        switch phase {
+                            case .empty:
+                                ProgressView()
+                                    .frame(width: 360, height: 200)
+                            case .success(let image):
+                                image
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 360, height: 200)
+                                    .clipped()
+                                    .cornerRadius(10)
+                            case .failure:
+                                Color.gray
+                                    .frame(width: 360, height: 200)
+                                    .cornerRadius(10)
+                            @unknown default:
+                                EmptyView()
+                            }
                     }
-                } 
             } else {
                 Color.gray
                     .frame(width: 360, height: 200)
@@ -124,6 +136,9 @@ struct PlaceCard: View {
         .padding(.horizontal, 8)
         .frame(width: 360)  // Fixed width for horizontal scrolling
         .cardStyle()
+        .onTapGesture {
+            onTap()
+        }
 
     }
 }

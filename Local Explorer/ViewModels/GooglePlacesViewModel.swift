@@ -19,7 +19,7 @@ class GooglePlacesViewModel: ObservableObject {
     @Published var errorMessage: String? = nil
     
     private let service = GooglePlacesService()
-    
+    			
     @Environment(\.modelContext) var modelContext
     
     // SwiftData functions
@@ -72,8 +72,22 @@ class GooglePlacesViewModel: ObservableObject {
                         print("No photos for \(place.name)")
                         continue
                     }
-
-                    self.photosURL[first_photoref] = URL(string: "https://lh3.googleusercontent.com/place-photos/AEkURDwmpaEZr4KRhmx5FsxTqIxFiCRvTSIQ56KUk2EOEINMxDcPHEGCwjKNCAr3yi8SRM5wmgMAueZTnSL6X58VMlqn8_zE7KWks2bbO2-2FlFpRc85AFjpmaNQUHB4dXP4QrEZjS2V8md-xFh0mg=s1600-w400")
+                    let first_photo_url = URL(string: "https://lh3.googleusercontent.com/place-photos/AEkURDwmpaEZr4KRhmx5FsxTqIxFiCRvTSIQ56KUk2EOEINMxDcPHEGCwjKNCAr3yi8SRM5wmgMAueZTnSL6X58VMlqn8_zE7KWks2bbO2-2FlFpRc85AFjpmaNQUHB4dXP4QrEZjS2V8md-xFh0mg=s1600-w400")
+                    self.photosURL[first_photoref] = first_photo_url
+                    
+                    //testing allPhotoURL
+                    if let firstPhotoURL = first_photo_url {
+                        self.allPhotoURL[place.place_id] = [firstPhotoURL]
+                        
+                        let testURLs = [
+                                URL(string: "https://abc.com"),
+                                URL(string: "https://def.com"),
+                                URL(string: "https://ghi.com")
+                        ]
+                        self.allPhotoURL[place.place_id]?.append(contentsOf: testURLs.compactMap { $0 })
+                    }                    
+                    //end test Allphotourl
+                    
                 }
             }
         } catch {

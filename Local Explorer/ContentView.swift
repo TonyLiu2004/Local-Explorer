@@ -12,8 +12,8 @@ struct ContentView: View {
     @StateObject var googlePlacesViewModel = GooglePlacesViewModel()
     
     var body: some View {
-        Group {
-            //Top Bar
+        VStack {
+//            Top Bar
             VStack(alignment: .leading) {
                 HStack {
                     Image(systemName: "location")
@@ -25,7 +25,7 @@ struct ContentView: View {
                                 .fill(Color.green.opacity(0.3))
                         )
                     Text("Current Location: ")
-                        .bold()
+                        	.bold()
                         .font(.caption)
                     + Text(locationManager.locationName)
                         .font(.caption)
@@ -35,7 +35,7 @@ struct ContentView: View {
             .padding()
             .frame(maxWidth: .infinity, alignment: .leading)
             .overlay(Divider(), alignment: .bottom)
-            
+
             if let location = locationManager.userLocation {
                 TabView {
                     DiscoverView(

@@ -28,7 +28,7 @@ struct SelectableBoxRow: View {
                     }
                 }
             }
-            .padding(.horizontal)
+//            .padding(.horizontal)
         }
     }
 }
