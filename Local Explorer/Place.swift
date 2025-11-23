@@ -110,7 +110,7 @@ extension PlaceDetails {
         price_level: nil,
         rating: nil,
         user_ratings_total: nil,
-        types: nil,
+        types: [],
         geometry: Geometry(
             location: Location(lat: 0.0, lng: 0.0),
             viewport: nil

@@ -9,20 +9,6 @@ struct SavedView: View {
     @State private var placeNameInput: String = ""
     var body: some View {
         VStack(spacing: 20) {
-            VStack(alignment: .leading) {
-                           Text("Add a Sample Place")
-                               .font(.headline)
-                           
-                           TextField("Place ID", text: $placeIDInput)
-                               .textFieldStyle(.roundedBorder)
-                           
-                           TextField("Place Name", text: $placeNameInput)
-                               .textFieldStyle(.roundedBorder)
-                       }
-                       .padding(.horizontal)
-            Button("Add Sample Place") {
-                addSamplePlace()
-            }
             
             Button("Fetch Stored Places") {
                 fetchStoredPlaces()
@@ -40,33 +26,74 @@ struct SavedView: View {
                             .font(.subheadline)
                             .foregroundColor(.gray)
                     }
+                    if let urls = viewModel.storedPhotoURL[place.place_id]{
+                        ScrollView (.horizontal){
+                            HStack{
+                                ForEach(urls, id: \.self) { url in
+                                    AsyncImage(url: url) { phase in
+                                        switch phase {
+                                        case .empty:
+                                            ProgressView()
+                                                .frame(width: 300, height: 200)
+                                        case .success(let image):
+                                            image
+                                                .resizable()
+                                                .scaledToFill()
+                                                .frame(width: 300, height: 200)
+                                                .clipped()
+                                                .cornerRadius(10)
+                                        case .failure:
+                                            EmptyView()
+                                        @unknown default:
+                                            Color.gray
+                                                .frame(width: 360, height: 200)
+                                                .cornerRadius(10)
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    } else{
+                        Color.gray
+                            .frame(width: 360, height: 200)
+                            .cornerRadius(10)
+                    }
                 }
             }
         }
         .padding()
     }
-    
-    private func addSamplePlace() {
-            // Create a sample PlaceDetails object
-            let samplePlace = PlaceDetails(
-                place_id: placeIDInput,
-                name: placeNameInput,
-                formatted_address: "123 Main St",
+
+    private func fetchStoredPlaces() {
+        let stored = viewModel.fetchStoredPlaces(context: modelContext)
+        
+        // Convert StoredPlaceDetails -> PlaceDetails (or just store StoredPlaceDetails if your List can handle it)
+        let places = stored.map { storedPlace in
+            var urls: [URL] = []
+            if let photoString = storedPlace.photoURLs, let url = URL(string: photoString) {
+                urls = [url]
+            }
+            viewModel.storedPhotoURL[storedPlace.place_id] = urls
+            
+            return PlaceDetails(
+                place_id: storedPlace.place_id,
+                name: storedPlace.name,
+                formatted_address: storedPlace.formatted_address,
                 international_phone_number: nil,
                 formatted_phone_number: nil,
                 website: nil,
                 price_level: nil,
-                rating: 4.7,
-                user_ratings_total: 100,
+                rating: storedPlace.rating,
+                user_ratings_total: storedPlace.user_ratings_total,
                 types: nil,
-                geometry: Geometry(location: Location(lat: 40.7128, lng: -74.0060), viewport: nil),
+                geometry: Geometry(location: Location(lat: storedPlace.latitude, lng: storedPlace.longitude), viewport: nil),
                 photos: nil,
                 opening_hours: nil,
-                current_opening_hours: nil,
+                current_opening_hours: OpeningHours(open_now: nil, periods: nil, weekday_text: storedPlace.weekdayText),
                 reviews: nil,
                 business_status: nil,
                 vicinity: nil,
-                editorial_summary: EditorialSummary(language: "en", overview: "A nice place to visit."),
+                editorial_summary: EditorialSummary(language: "en", overview: storedPlace.editorial_overview),
                 url: nil,
                 delivery: nil,
                 dine_in: nil,
@@ -81,19 +108,10 @@ struct SavedView: View {
                 reservable: nil,
                 wheelchair_accessible_entrance: nil
             )
-            
-            viewModel.savePlaces([samplePlace], context: modelContext)
-            
-            // Also update the view model list for immediate UI feedback
-            viewModel.placeDetailsList.append(samplePlace)
         }
-    
-    private func fetchStoredPlaces() {
-        let stored = viewModel.fetchStoredPlaces(context: modelContext)
-        for place in stored {
-            print(place.name)
-        }
-        print("=======")
+        
+        viewModel.placeDetailsList = places
+        print("Fetched \(places.count) places")
     }
 }
 

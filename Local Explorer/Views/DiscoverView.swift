@@ -94,30 +94,30 @@ struct DiscoverView: View {
                 } //end Vstack
                 .padding(.bottom, 32)
             } //end ScrollView
-//            .overlay {
-//                if let place = selectedPlace, let vm = selectedViewModel {
-//                    ZStack
-//                    {
-//                        Color.black.opacity(0.4)
-//                        .ignoresSafeArea()
-//                    }
-//                    
-//                    VStack {
-//                        PlacePopup(
-//                            place: place,
-//                            onClose: {
-//                                withAnimation(.easeOut(duration: 0.5)) {
-//                                    selectedPlace = nil
-//                                }
-//                            },
-//                            viewModel: vm
-//                        )
-//                        Spacer()
-//                    } //end vstack
-//                    .padding(.top, 16)
-//                    .transition(.move(edge: .bottom))
-//                } //end if
-//            } //end overlay
+            .overlay {
+                if let place = selectedPlace, let vm = selectedViewModel {
+                    ZStack
+                    {
+                        Color.black.opacity(0.4)
+                        .ignoresSafeArea()
+                    }
+                    
+                    VStack {
+                        PlacePopup(
+                            place: place,
+                            onClose: {
+                                withAnimation(.easeOut(duration: 0.5)) {
+                                    selectedPlace = nil
+                                }
+                            },
+                            viewModel: vm
+                        )
+                        Spacer()
+                    } //end vstack
+                    .padding(.top, 16)
+                    .transition(.move(edge: .bottom))
+                } //end if
+            } //end overlay
             .animation(.easeIn(duration: 0.5), value: selectedPlace != nil)
         } //end Vstack
     }// end body
@@ -137,9 +137,7 @@ struct HorizontalPlacesList: View {
                     PlaceCard(
                         place: PlaceDetails.placeholder,
                         location:location,
-                        onTap: {
-                            onSelect(PlaceDetails.placeholder, viewModel)
-                        },
+                        onTap: { },
                         viewModel: viewModel)
                 } else {
                     ForEach(viewModel.placeDetailsList) { placeDetail in

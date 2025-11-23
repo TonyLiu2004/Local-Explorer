@@ -143,26 +143,26 @@ struct PlacePopup: View {
                             }
                         } else {
                             Text("review")
-//                            if let reviews = place.reviews {
-//                                ForEach(reviews.indices, id: \.self) { i in
-//                                    let review = reviews[i]
-//                                    VStack(alignment: .leading, spacing: 6) {
-//                                        Text("\(review.author_name)")
-//                                            .bold()
-//                                        if let rating = review.rating, let time = review.relative_time_description {
-//                                            Text("\(String(repeating: "⭐️", count: Int(rating))) · \(time)")
-//                                            .captionStyle()
-//                                        }
-//                                        if let text = review.text {
-//                                            Text(text)
-//                                                .font(.system(size: 16))
-//                                        }
-//                                        
-//                                        Divider()
-//                                    }
-//                                } //end foreach
-//                                
-//                            }//end if reviews section
+                            if let reviews = place.reviews {
+                                ForEach(reviews.indices, id: \.self) { i in
+                                    let review = reviews[i]
+                                    VStack(alignment: .leading, spacing: 6) {
+                                        Text("\(review.author_name)")
+                                            .bold()
+                                        if let rating = review.rating, let time = review.relative_time_description {
+                                            Text("\(String(repeating: "⭐️", count: Int(rating))) · \(time)")
+                                            .captionStyle()
+                                        }
+                                        if let text = review.text {
+                                            Text(text)
+                                                .font(.system(size: 16))
+                                        }
+                                        
+                                        Divider()
+                                    }
+                                } //end foreach
+                                
+                            }//end if reviews section
                         } // end else
                     }//end selected options vstack
                 }//end vstack

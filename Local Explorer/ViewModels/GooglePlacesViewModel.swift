@@ -16,6 +16,7 @@ class GooglePlacesViewModel: ObservableObject {
     @Published var photos: [String: UIImage] = [:]  // photo_reference -> image
     @Published var photosURL: [String: URL] = [:] // photoref -> URL
     @Published var allPhotoURL: [String: [URL]] = [:] //place_id -> [photoURls]
+    @Published var storedPhotoURL: [String: [URL]] = [:]
     @Published var errorMessage: String? = nil
     
     private let service = GooglePlacesService()
@@ -24,17 +25,25 @@ class GooglePlacesViewModel: ObservableObject {
     
     // SwiftData functions
     func savePlaces(_ places: [PlaceDetails], context: ModelContext) {
-        for place in places {
-            let urls = allPhotoURL[place.place_id]?.map { $0.absoluteString } ?? []
-            let stored = StoredPlaceDetails(from: place, photoURLs: urls)
-            context.insert(stored)
-        }
+        do{
+            let all = try context.fetch(FetchDescriptor<StoredPlaceDetails>())
+            
+            for place in places {
+                //delete old context if it exists
+                if let existing = all.first(where: { $0.place_id == place.place_id }) {
+                    context.delete(existing)
+                }
+                
+    //            let urls = allPhotoURL[place.place_id]?.map { $0.absoluteString } ?? []
+                guard let first = allPhotoURL[place.place_id]?.first?.absoluteString else {return}
 
-        do {
+                let stored = StoredPlaceDetails(from: place, photoURLs: first)//]urls)
+                context.insert(stored)
+            } //end for
             try context.save()
             print("Saved \(places.count) places to SwiftData.")
         } catch {
-            print("❌ Failed to save: \(error)")
+            print("couldnt fetch all")
         }
     }
     
