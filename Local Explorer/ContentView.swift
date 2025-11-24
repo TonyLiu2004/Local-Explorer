@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @ObservedObject var locationManager = LocationManager.shared
     @StateObject var googlePlacesViewModel = GooglePlacesViewModel()
+    @Environment(\.modelContext) private var modelContext
     
     var body: some View {
         VStack {
@@ -54,6 +55,9 @@ struct ContentView: View {
             } else {
                 LocationRequestView()
             }
+        } //end main Vstack
+        .task {
+            googlePlacesViewModel.fetchStoredPlaces(context: modelContext)
         }
     }
 }

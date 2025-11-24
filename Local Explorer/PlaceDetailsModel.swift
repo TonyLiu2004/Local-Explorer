@@ -19,10 +19,10 @@ class StoredPlaceDetails {
     var longitude: Double
     var photo_reference: String?
     var editorial_overview: String?
-    var photoURLs: String?
+    var photo_URL_strings: [String] = []
     var weekdayText: [String] = []
 
-    init(from place: PlaceDetails, photoURLs: String) {
+    init(from place: PlaceDetails, photoURLs: [String]) {
         self.place_id = place.place_id
         self.name = place.name
         self.formatted_address = place.formatted_address
@@ -33,7 +33,7 @@ class StoredPlaceDetails {
         self.longitude = place.geometry.location.lng
         self.photo_reference = place.photos?.first?.photo_reference
         self.editorial_overview = place.editorial_summary?.overview
-        self.photoURLs = photoURLs
+        self.photo_URL_strings = photoURLs
         self.weekdayText = place.current_opening_hours?.weekday_text ?? []
     }
 }

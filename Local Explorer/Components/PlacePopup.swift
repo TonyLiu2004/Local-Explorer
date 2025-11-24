@@ -14,7 +14,7 @@ struct PlacePopup: View {
     // slide-up animation state
     @State private var offsetY: CGFloat = 300
     @State private var opacity: CGFloat = 0
-    
+        
     let options = [
         Option(label: "Overview", value: "overview"),
         Option(label: "Reviews", value: "Reviews"),
@@ -22,6 +22,7 @@ struct PlacePopup: View {
     
     @State private var selectedOption: String?
     @Environment(\.modelContext) private var modelContext
+    @State private var storedPlace: StoredPlaceDetails?
     
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
@@ -51,39 +52,35 @@ struct PlacePopup: View {
             ScrollView{
                 VStack (alignment: .leading, spacing : 12){
                     //Photo gallery
-                    if let urls = viewModel.allPhotoURL[place.place_id]{
-                        ScrollView (.horizontal){
-                            HStack{
-                                ForEach(urls, id: \.self) { url in
-                                    AsyncImage(url: url) { phase in
-                                        switch phase {
-                                        case .empty:
-                                            ProgressView()
-                                                .frame(width: 300, height: 200)
-                                        case .success(let image):
-                                            image
-                                                .resizable()
-                                                .scaledToFill()
-                                                .frame(width: 300, height: 200)
-                                                .clipped()
-                                                .cornerRadius(10)
-                                        case .failure:
-                                            EmptyView()
-                                        @unknown default:
-                                            Color.gray
-                                                .frame(width: 360, height: 200)
-                                                .cornerRadius(10)
-                                        }
+                    let urls = place.photos?
+                    .compactMap { viewModel.photosURL[$0.photo_reference] } ?? []
+                    
+                    ScrollView (.horizontal){
+                        HStack{
+                            ForEach(urls, id: \.self) { url in
+                                AsyncImage(url: url) { phase in
+                                    switch phase {
+                                    case .empty:
+                                        ProgressView()
+                                            .frame(width: 300, height: 200)
+                                    case .success(let image):
+                                        image
+                                            .resizable()
+                                            .scaledToFill()
+                                            .frame(width: 300, height: 200)
+                                            .clipped()
+                                            .cornerRadius(10)
+                                    case .failure:
+                                        EmptyView()
+                                    @unknown default:
+                                        Color.gray
+                                            .frame(width: 360, height: 200)
+                                            .cornerRadius(10)
                                     }
                                 }
                             }
                         }
-                    } else{
-                        Color.gray
-                            .frame(width: 360, height: 200)
-                            .cornerRadius(10)
                     }
-                    //end photogallery
                     
                     HStack
                     {
@@ -112,7 +109,7 @@ struct PlacePopup: View {
                     
                     //save button
                     Button(action: {
-                        viewModel.savePlaces([place], context: modelContext)
+                        viewModel.savePlace(place, context: modelContext)
                     }) {
                         Text("Save")
                             .font(.system(size: 14))
@@ -174,6 +171,9 @@ struct PlacePopup: View {
         .background(.white)
         .clipShape(RoundedRectangle(cornerRadius: 24))
         .shadow(radius: 10)
+        .task{
+            viewModel.fetchAllPhotos(place)
+        }
     }
 }
 

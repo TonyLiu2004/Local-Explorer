@@ -63,7 +63,7 @@ extension Place {
     )
 }
 
-struct PlaceDetails: Decodable, Identifiable {
+struct PlaceDetails: Decodable, Identifiable, Equatable {
     var id: String { place_id }
     
     let place_id: String
@@ -139,56 +139,56 @@ extension PlaceDetails {
 }
 
 
-struct Geometry: Decodable {
+struct Geometry: Decodable, Equatable {
     let location: Location
     let viewport: Viewport?
 }
 
-struct Location: Decodable {
+struct Location: Decodable, Equatable {
     let lat: Double
     let lng: Double
 }
 
-struct Viewport: Decodable {
+struct Viewport: Decodable, Equatable {
     let northeast: Coordinate
     let southwest: Coordinate
 }
 
-struct Coordinate: Decodable {
+struct Coordinate: Decodable, Equatable {
     let lat: Double
     let lng: Double
 }
 
-struct Photo: Decodable {
+struct Photo: Decodable, Equatable {
     let height: Int
     let html_attributions: [String]
     let photo_reference: String
     let width: Int
 }
 
-struct PlusCode: Decodable {
+struct PlusCode: Decodable, Equatable {
     let compound_code: String?
     let global_code: String?
 }
 
-struct OpeningHours: Decodable {
+struct OpeningHours: Decodable, Equatable {
     let open_now: Bool?
     let periods: [Period]?
     let weekday_text: [String]?
 }
 
-struct Period: Decodable {
+struct Period: Decodable, Equatable {
     let open: DayTime
     let close: DayTime?
 }
 
-struct DayTime: Decodable {
+struct DayTime: Decodable, Equatable {
     let day: Int?
     let time: String?
     let date: String? // Some fields like current_opening_hours include `date`
 }
 
-struct Review: Decodable {
+struct Review: Decodable, Equatable {
     let author_name: String
     let author_url: String?
     let profile_photo_url: String?
@@ -201,7 +201,7 @@ struct Review: Decodable {
     let translated: Bool?
 }
 
-struct EditorialSummary: Decodable {
+struct EditorialSummary: Decodable, Equatable {
     let language: String?
     let overview: String?
 }
