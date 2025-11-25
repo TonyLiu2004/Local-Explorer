@@ -11,13 +11,29 @@
 		8BB4B4992EC2E8AF00825FEC /* placeDetailsSample.json in Resources */ = {isa = PBXBuildFile; fileRef = 8BB4B4982EC2E8A500825FEC /* placeDetailsSample.json */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		8B9EA74B2ED52F2C00661D67 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8BC57A442E78B8CF00446319 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8BC57A4B2E78B8CF00446319;
+			remoteInfo = "Local Explorer";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		8B9EA7472ED52F2C00661D67 /* Local ExplorerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Local ExplorerTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BB4B4942EC2E60200825FEC /* places_sample.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = places_sample.json; sourceTree = "<group>"; };
 		8BB4B4982EC2E8A500825FEC /* placeDetailsSample.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = placeDetailsSample.json; sourceTree = "<group>"; };
 		8BC57A4C2E78B8CF00446319 /* Local Explorer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Local Explorer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		8B9EA7482ED52F2C00661D67 /* Local ExplorerTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "Local ExplorerTests";
+			sourceTree = "<group>";
+		};
 		8BC57A4E2E78B8CF00446319 /* Local Explorer */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = "Local Explorer";
@@ -26,6 +42,13 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		8B9EA7442ED52F2C00661D67 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8BC57A492E78B8CF00446319 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -40,6 +63,7 @@
 			isa = PBXGroup;
 			children = (
 				8BC57A4E2E78B8CF00446319 /* Local Explorer */,
+				8B9EA7482ED52F2C00661D67 /* Local ExplorerTests */,
 				8BC57A4D2E78B8CF00446319 /* Products */,
 				8BB4B4942EC2E60200825FEC /* places_sample.json */,
 				8BB4B4982EC2E8A500825FEC /* placeDetailsSample.json */,
@@ -50,6 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				8BC57A4C2E78B8CF00446319 /* Local Explorer.app */,
+				8B9EA7472ED52F2C00661D67 /* Local ExplorerTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -57,6 +82,29 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		8B9EA7462ED52F2C00661D67 /* Local ExplorerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8B9EA74D2ED52F2C00661D67 /* Build configuration list for PBXNativeTarget "Local ExplorerTests" */;
+			buildPhases = (
+				8B9EA7432ED52F2C00661D67 /* Sources */,
+				8B9EA7442ED52F2C00661D67 /* Frameworks */,
+				8B9EA7452ED52F2C00661D67 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8B9EA74C2ED52F2C00661D67 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				8B9EA7482ED52F2C00661D67 /* Local ExplorerTests */,
+			);
+			name = "Local ExplorerTests";
+			packageProductDependencies = (
+			);
+			productName = "Local ExplorerTests";
+			productReference = 8B9EA7472ED52F2C00661D67 /* Local ExplorerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		8BC57A4B2E78B8CF00446319 /* Local Explorer */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8BC57A572E78B8D000446319 /* Build configuration list for PBXNativeTarget "Local Explorer" */;
@@ -89,6 +137,10 @@
 				LastSwiftUpdateCheck = 1640;
 				LastUpgradeCheck = 2610;
 				TargetAttributes = {
+					8B9EA7462ED52F2C00661D67 = {
+						CreatedOnToolsVersion = 16.4;
+						TestTargetID = 8BC57A4B2E78B8CF00446319;
+					};
 					8BC57A4B2E78B8CF00446319 = {
 						CreatedOnToolsVersion = 16.4;
 					};
@@ -109,11 +161,19 @@
 			projectRoot = "";
 			targets = (
 				8BC57A4B2E78B8CF00446319 /* Local Explorer */,
+				8B9EA7462ED52F2C00661D67 /* Local ExplorerTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		8B9EA7452ED52F2C00661D67 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8BC57A4A2E78B8CF00446319 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -126,6 +186,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		8B9EA7432ED52F2C00661D67 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8BC57A482E78B8CF00446319 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -135,7 +202,51 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		8B9EA74C2ED52F2C00661D67 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8BC57A4B2E78B8CF00446319 /* Local Explorer */;
+			targetProxy = 8B9EA74B2ED52F2C00661D67 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		8B9EA74E2ED52F2C00661D67 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 296MWFF4SZ;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.tonyliu404.Local-ExplorerTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Local Explorer.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Local Explorer";
+			};
+			name = Debug;
+		};
+		8B9EA74F2ED52F2C00661D67 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 296MWFF4SZ;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.tonyliu404.Local-ExplorerTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Local Explorer.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Local Explorer";
+			};
+			name = Release;
+		};
 		8BC57A552E78B8D000446319 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -324,6 +435,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		8B9EA74D2ED52F2C00661D67 /* Build configuration list for PBXNativeTarget "Local ExplorerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8B9EA74E2ED52F2C00661D67 /* Debug */,
+				8B9EA74F2ED52F2C00661D67 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		8BC57A472E78B8CF00446319 /* Build configuration list for PBXProject "Local Explorer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

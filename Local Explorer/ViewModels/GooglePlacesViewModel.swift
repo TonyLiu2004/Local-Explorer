@@ -26,7 +26,7 @@ class GooglePlacesViewModel: ObservableObject {
     // SwiftData functions
     func fetchStoredPlaces(context: ModelContext) {
         let stored = fetchStoredPlacesFromContext(context: context)
-        
+
         // Convert StoredPlaceDetails -> PlaceDetails (or just store StoredPlaceDetails if your List can handle it)
         for storedPlace in stored {
             if storedPlaceDetailsList.contains(where: { $0.place_id == storedPlace.place_id }) {
