@@ -25,12 +25,23 @@ struct ContentView: View {
                             Circle()
                                 .fill(Color.green.opacity(0.3))
                         )
-                    Text("Current Location: ")
-                        	.bold()
-                        .font(.caption)
-                    + Text(locationManager.locationName)
-                        .font(.caption)
-                        .foregroundColor(.secondary)
+                    var attributed: AttributedString {
+                        var title = AttributedString("Current Location: ")
+                        title.font = .caption.bold()
+
+                        var value = AttributedString(locationManager.locationName)
+                        value.font = .caption
+                        value.foregroundColor = .secondary
+
+                        return title + value
+                    }
+                    Text(attributed)
+                   // Text("Current Location: ")
+                   //     .bold()
+                   //     .font(.caption)
+                   // + Text(locationManager.locationName)
+                   //     .font(.caption)
+                   //     .foregroundColor(.secondary)
                 }
             }
             .padding()

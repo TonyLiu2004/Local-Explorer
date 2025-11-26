@@ -77,15 +77,20 @@ struct PlaceCard: View {
             }
             .padding([.leading, .trailing], 8)
             
-            if let current = place.current_opening_hours {
-                Text(current.open_now == true ? "Open" : "Closed")
-                    .captionStyle()
-                    .padding(.horizontal, 8)
-            } else {
-                Text("Hours unavailable")
-                    .captionStyle()
-                    .padding(.horizontal, 8)
+            var status: AttributedString {
+                if let open = place.current_opening_hours?.open_now {
+                    var s = AttributedString(open ? "Open" : "Closed")
+                    s.foregroundColor = open ? .green : .red
+                    return s
+                } else {
+                    return AttributedString("Hours unavailable")
+                }
             }
+
+            Text(status)
+                .captionStyle()
+                .padding(.horizontal, 8)
+
             Text("Price: \(priceText)")
                 .captionStyle()
                 .padding(.horizontal, 8)

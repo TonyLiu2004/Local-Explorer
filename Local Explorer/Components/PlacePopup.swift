@@ -84,10 +84,23 @@ struct PlacePopup: View {
                     
                     HStack
                     {
-                        if let rating = place.rating {
-                            Text("\(String(format: "%.1f", rating)) ⭐️ (\(place.user_ratings_total ?? 0))")
-                                .captionStyle()
+                        var ratingText: AttributedString {
+                            guard let rating = place.rating else { return AttributedString("") }
+
+                            let full = Int(round(rating))
+
+                            let stars =
+                                String(repeating: "⭐️", count: full)
+
+                            return AttributedString("\(String(format: "%.1f", rating)) \(stars) (\(place.user_ratings_total ?? 0))")
                         }
+
+                        Text(ratingText)
+                            .captionStyle()
+//                        if let rating = place.rating {
+//                            Text("\(String(format: "%.1f", rating)) ⭐️ (\(place.user_ratings_total ?? 0))")
+//                                .captionStyle()
+//                        }
                         Spacer()
                     }
                     
@@ -127,7 +140,14 @@ struct PlacePopup: View {
                     VStack (alignment: .leading, spacing : 12) {
                         if selectedOption == "overview" {
                             if let current = place.current_opening_hours {
-                                Text(current.open_now == true ? "Open" : "Closed")
+//                                Text(current.open_now == true ? "Open" : "Closed")
+                                var status: AttributedString {
+                                    var text = AttributedString(current.open_now == true ? "Open" : "Closed")
+                                    text.foregroundColor = current.open_now == true ? .green : .red
+                                    return text
+                                }
+
+                                Text(status)
                             }
                             if let address = place.formatted_address {
                                 Text(address)
