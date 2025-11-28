@@ -186,18 +186,6 @@ struct HorizontalPlacesList: View {
     }
 }
 
-class MockLocationManager: LocationManager {
-    override init() {
-        super.init()
-        self.userLocation = CLLocation(latitude: 40.758683, longitude: -73.8331742)
-    }
-}
-
-//#Preview {
-//    DiscoverView(locationManager: MockLocationManager())
-//        .modelContainer(for: StoredPlaceDetails.self)
-//}
-
 #Preview {
     ContentView()
 }

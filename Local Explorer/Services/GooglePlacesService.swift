@@ -26,7 +26,7 @@ class GooglePlacesService {
     ) {
         var urlString = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=\(lat),\(lon)&radius=\(radius)&key=\(apiKey)"
         
-        if let keyword = keyword {
+        if let keyword = keyword, !keyword.isEmpty {
             urlString += "&keyword=\(keyword.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "")"
         }
         if let type = type {
