@@ -187,5 +187,5 @@ struct HorizontalPlacesList: View {
 }
 
 #Preview {
-    ContentView()
+    ContentView().environmentObject(GooglePlacesViewModel())
 }

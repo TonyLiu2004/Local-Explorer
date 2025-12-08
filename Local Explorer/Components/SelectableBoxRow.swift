@@ -34,5 +34,5 @@ struct SelectableBoxRow: View {
 }
 
 #Preview {
-    ContentView()
+    ContentView().environmentObject(GooglePlacesViewModel())
 }

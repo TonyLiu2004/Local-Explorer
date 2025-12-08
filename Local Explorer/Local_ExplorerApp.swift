@@ -10,9 +10,11 @@ import SwiftData
 
 @main
 struct Local_ExplorerApp: App {
+    @StateObject var viewModel = GooglePlacesViewModel()
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(viewModel)
         }
         .modelContainer(for: StoredPlaceDetails.self)
     }

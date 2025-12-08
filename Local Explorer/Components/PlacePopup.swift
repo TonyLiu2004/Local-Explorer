@@ -82,8 +82,7 @@ struct PlacePopup: View {
                         }
                     }
                     
-                    HStack
-                    {
+                    HStack {
                         var ratingText: AttributedString {
                             guard let rating = place.rating else { return AttributedString("") }
 
@@ -97,10 +96,6 @@ struct PlacePopup: View {
 
                         Text(ratingText)
                             .captionStyle()
-//                        if let rating = place.rating {
-//                            Text("\(String(format: "%.1f", rating)) ⭐️ (\(place.user_ratings_total ?? 0))")
-//                                .captionStyle()
-//                        }
                         Spacer()
                     }
                     
@@ -108,58 +103,110 @@ struct PlacePopup: View {
                         Text("\(overview)")
                     }
                     
-                    SelectableBoxRow(
-                        options: options,
-                        selectedOption: $selectedOption
-                    )
-                    .onAppear {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                            if selectedOption == nil {
-                                selectedOption = options.first?.value
+                    HStack{
+                        SelectableBoxRow(
+                            options: options,
+                            selectedOption: $selectedOption
+                        )
+                        .onAppear {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                if selectedOption == nil {
+                                    selectedOption = options.first?.value
+                                }
                             }
                         }
+                        
+                        //Save button
+                        Button {
+                            if viewModel.storedPlaceDetailsList.contains(where: { $0.id == place.id }) {
+                                viewModel.removePlace(place, context: modelContext)
+                            } else {
+                                viewModel.savePlace(place, context: modelContext)
+                            }
+                        } label: {
+                            Image(systemName: viewModel.storedPlaceDetailsList.contains(where: { $0.id == place.id }) ? "bookmark.fill" : "bookmark")
+                                .resizable()
+                                .frame(width: 22, height: 26)
+                        }
                     }
-                    
-                    //save button
-                    Button(action: {
-                        viewModel.savePlace(place, context: modelContext)
-                    }) {
-                        Text("Save")
-                            .font(.system(size: 14))
-                            .bold()
-                            .foregroundColor(.white)
-                            .padding(.vertical, 8)
-                            .padding(.horizontal, 24)
-                            .background(Color.blue)
-                            .cornerRadius(12)
-                    }
-                    .padding(.top, 16)
-                    //end save button
                     
                     //selected options overview/review
                     VStack (alignment: .leading, spacing : 12) {
                         if selectedOption == "overview" {
-                            if let current = place.current_opening_hours {
-//                                Text(current.open_now == true ? "Open" : "Closed")
-                                var status: AttributedString {
-                                    var text = AttributedString(current.open_now == true ? "Open" : "Closed")
-                                    text.foregroundColor = current.open_now == true ? .green : .red
-                                    return text
+                            // Time
+                            HStack {
+                                Image(systemName: "clock")
+                                    .resizable()
+                                    .frame(width: 16, height: 16)
+                                    .padding(.trailing, 12)
+                                if let current = place.current_opening_hours {
+                                    var status: AttributedString {
+                                        var text = AttributedString(current.open_now == true ? "Open" : "Closed")
+                                        text.foregroundColor = current.open_now == true ? .green : .red
+                                        return text
+                                    }
+                                    
+                                    Text(status)
+                                } else{
+                                    Text("No Information")
                                 }
+                                Spacer()
+                                if let times = place.current_opening_hours?.weekday_text {
+                                    // gets current day and displays the hours
+                                    let calendar = Calendar.current
+                                    let todayIndex = calendar.component(.weekday, from: Date())
+                                    let weekdayTextIndex = (todayIndex + 5) % 7
 
-                                Text(status)
+                                    if times.indices.contains(weekdayTextIndex) {
+                                        Text(times[weekdayTextIndex])
+                                            .font(.body)
+                                    } else {
+                                        Text("Hours unavailable")
+                                    }
+                                }
                             }
-                            if let address = place.formatted_address {
-                                Text(address)
+                            
+                            // location
+                            HStack {
+                                Image(systemName: "paperplane")
+                                    .resizable()
+                                    .frame(width: 16, height: 16)
+                                    .padding(.trailing, 12)
+                                if let address = place.formatted_address {
+                                    Text(address)
+                                }
                             }
-                            if let phone = place.formatted_phone_number{
-                                Text(phone)
+                            
+                            // Phone
+                            HStack {
+                                Image(systemName: "phone")
+                                    .resizable()
+                                    .frame(width: 16, height: 16)
+                                    .padding(.trailing, 12)
+                                if let phone = place.formatted_phone_number{
+                                    Text(phone)
+                                }
                             }
-                            if let times = place.current_opening_hours?.weekday_text {
-                                Text("\(times)")
+                            
+                            // Website
+                            HStack {
+                                Image(systemName: "globe")
+                                    .resizable()
+                                    .frame(width: 16, height: 16)
+                                    .padding(.trailing, 12)
+                                if let website = place.website{
+                                    Text(website)
+                                }
+                            }
+                            
+                            // Full Time
+                            HStack {
+                                Text("").padding(.trailing, 28)
+                                if let times = place.current_opening_hours?.weekday_text {
+                                    Text(times.joined(separator: "\n"))
+                                }
                             }
                         } else {
-                            Text("review")
                             if let reviews = place.reviews {
                                 ForEach(reviews.indices, id: \.self) { i in
                                     let review = reviews[i]
@@ -172,7 +219,7 @@ struct PlacePopup: View {
                                         }
                                         if let text = review.text {
                                             Text(text)
-                                                .font(.system(size: 16))
+                                                .font(.system(size: 14))
                                         }
                                         
                                         Divider()
@@ -182,6 +229,7 @@ struct PlacePopup: View {
                             }//end if reviews section
                         } // end else
                     }//end selected options vstack
+                    .padding(.horizontal, 4)
                 }//end vstack
             }
         }//end vstack
@@ -198,5 +246,5 @@ struct PlacePopup: View {
 }
 
 #Preview {
-    ContentView()
+    ContentView().environmentObject(GooglePlacesViewModel())
 }

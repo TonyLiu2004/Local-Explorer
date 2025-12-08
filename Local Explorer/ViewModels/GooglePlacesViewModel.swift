@@ -69,8 +69,8 @@ class GooglePlacesViewModel: ObservableObject {
                 wheelchair_accessible_entrance: nil
             )
             storedPlaceDetailsList.append(place_detail)
-            print("Fetched \(storedPlaceDetailsList.count) places")
         }
+        print("Fetched \(storedPlaceDetailsList.count) places")
     }
     
     func fetchStoredPlacesFromContext(context: ModelContext) -> [StoredPlaceDetails] {
@@ -100,11 +100,32 @@ class GooglePlacesViewModel: ObservableObject {
             context.insert(stored)
             
             try context.save()
+            storedPlaceDetailsList.append(place)
+            self.storedPhotoURL[place.place_id] = urls
             print("Saved \(place.name) place to SwiftData.")
         } catch {
             print("couldnt fetch all")
         }
     }
+    
+    func removePlace(_ place: PlaceDetails, context: ModelContext) {
+        do {
+            let all = try context.fetch(FetchDescriptor<StoredPlaceDetails>())
+            
+            if let existing = all.first(where: { $0.place_id == place.place_id }) {
+                context.delete(existing)
+                try context.save()
+                storedPlaceDetailsList.removeAll { $0.place_id == place.place_id }
+                print("Removed \(place.name) from SwiftData.")
+            } else {
+                print("Place not found, nothing to remove.")
+            }
+            
+        } catch {
+            print("Failed to fetch or remove place: \(error)")
+        }
+    }
+
     
     //fetch single place, used to check if a place is already stored
     func getStoredPlace(placeID: String, context: ModelContext) -> StoredPlaceDetails? {

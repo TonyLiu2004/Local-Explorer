@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SearchHistoryView: View {
-    @Binding var history: [String]
+    let history: [String]
     @Binding var query: String
     @Binding var showHistory: Bool
     var searchFocused: FocusState<Bool>.Binding // Use FocusState.Binding for the boolean state
@@ -33,7 +33,7 @@ struct SearchHistoryView: View {
                         .contentShape(Rectangle())
                     }
                     .buttonStyle(.plain)
-                    .frame(width: .infinity, alignment: .leading)
+                    .frame(maxWidth: .infinity, alignment: .leading)
                     
                     Divider()
                 }
@@ -48,5 +48,5 @@ struct SearchHistoryView: View {
 }
 
 #Preview{
-    ContentView()
+    ContentView().environmentObject(GooglePlacesViewModel())
 }

@@ -54,5 +54,5 @@ struct SearchBar: View {
 }
 
 #Preview {
-    ContentView()
+    ContentView().environmentObject(GooglePlacesViewModel())
 }

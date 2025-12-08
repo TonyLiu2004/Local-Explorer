@@ -136,5 +136,5 @@ struct PlaceCard: View {
 }
 
 #Preview {
-    ContentView()
+    ContentView().environmentObject(GooglePlacesViewModel())
 }

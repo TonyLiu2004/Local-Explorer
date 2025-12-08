@@ -10,11 +10,24 @@ import CoreLocation
 
 struct Browse: View {
     let location: CLLocation
-    @StateObject var viewModel = GooglePlacesViewModel()
+//    @StateObject var viewModel = GooglePlacesViewModel()
+//    @ObservedObject var viewModel: GooglePlacesViewModel
+    @EnvironmentObject var viewModel: GooglePlacesViewModel
     @State private var lastLocation: CLLocation?
     @State private var selectedPlace: PlaceDetails? = nil
     
-    @State private var history: [String] = ["apple", "banana", "chicken"]
+//    @State private var history: [String] = []
+    @AppStorage("search_history") private var historyData: Data = Data()
+    
+    var history: [String] {
+        get {
+            (try? JSONDecoder().decode([String].self, from: historyData)) ?? []
+        }
+        set {
+            historyData = (try? JSONEncoder().encode(newValue)) ?? Data()
+        }
+    }
+
     @State private var query = ""
     @State private var showHistory = false
     
@@ -33,7 +46,7 @@ struct Browse: View {
                             } label: {
                                 Image(systemName: "magnifyingglass")
                                     .resizable()
-                                    .frame(width: 20, height: 20)
+                                    .frame(width: 24, height: 24)
                                     .foregroundColor(.white)
                             }
                             .padding(.vertical, 6)
@@ -51,7 +64,7 @@ struct Browse: View {
                     .allowsHitTesting(searchFocused)
                     
                     SearchHistoryView(
-                        history: $history,
+                        history: history,
                         query: $query,
                         showHistory: $showHistory,
                         searchFocused: $searchFocused
@@ -59,7 +72,7 @@ struct Browse: View {
                 }
                 .zIndex(100)
                 .background { searchFocused ? Color.white : Color.clear }
-
+                
                 ScrollView(.vertical) {
                     LazyVStack(spacing: 0) {
                         ForEach(viewModel.placeDetailsList, id: \.place_id) { place in
@@ -69,7 +82,9 @@ struct Browse: View {
                                 onTap: {
                                     selectedPlace = place
                                 },
-                                viewModel: viewModel)
+                                viewModel: viewModel
+                            )
+                            Divider()
                         }
                     }
                 }
@@ -140,7 +155,24 @@ struct Browse: View {
     }
     
     func submitSearch(){
+        let trimmed = query.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmed.isEmpty else { return }
+        
         print("searching for \(query)")
+        
+        var newHistory = history
+
+        if !newHistory.contains(query) {
+            newHistory.insert(query, at: 0)
+        }
+
+        if newHistory.count > 5 {
+            newHistory.removeLast()
+        }
+
+        historyData = (try? JSONEncoder().encode(newHistory)) ?? Data()
+        
+        query = ""
         viewModel.fetchNearbyPlaces(
             lat: location.coordinate.latitude,
             lon: location.coordinate.longitude,
@@ -152,5 +184,5 @@ struct Browse: View {
 
 #Preview {
 //    Browse(location:CLLocation(latitude: 40.7580, longitude: -73.9855))
-    ContentView()
+    ContentView().environmentObject(GooglePlacesViewModel())
 }
