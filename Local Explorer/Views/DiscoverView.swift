@@ -163,10 +163,12 @@ struct HorizontalPlacesList: View {
             )
         }
         .onChange(of: type) {
+            print("type changed, fetching: ")
             viewModel.fetchNearbyPlaces(
                 lat: location.coordinate.latitude,
                 lon: location.coordinate.longitude,
-                type: type
+                type: type,
+                replace: true
             )
         }
         .onChange(of: location) {

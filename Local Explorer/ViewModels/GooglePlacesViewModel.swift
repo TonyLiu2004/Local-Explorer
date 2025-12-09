@@ -70,7 +70,7 @@ class GooglePlacesViewModel: ObservableObject {
             )
             storedPlaceDetailsList.append(place_detail)
         }
-        print("Fetched \(storedPlaceDetailsList.count) places")
+        print("Fetched \(storedPlaceDetailsList.count) places that were stored")
     }
     
     func fetchStoredPlacesFromContext(context: ModelContext) -> [StoredPlaceDetails] {
@@ -173,54 +173,97 @@ class GooglePlacesViewModel: ObservableObject {
     }
     
     // Nearby Places
-    func fetchNearbyPlaces(lat: Double, lon: Double, radius: Int = 100, keyword: String? = nil, type: String? = nil) {
+    func fetchNearbyPlaces(lat: Double, lon: Double, radius: Int = 100, keyword: String? = nil, type: String? = nil, replace: Bool = false) {
         loadSamplePlaces()
         
 //        service.searchPlaces(lat: lat, lon: lon, radius: radius, keyword: keyword, type: type) { [weak self] result in
+//            guard let self = self else {
+//                return
+//            }
+//            
 //            DispatchQueue.main.async {
 //                switch result {
 //                case .success(let fetchedPlaces):
-//                    self?.places = fetchedPlaces
-//                    self?.fetchDetailsForPlaces(fetchedPlaces)
+////                    self?.places = fetchedPlaces
+////                    self.fetchDetailsForPlaces(fetchedPlaces)
+//                    if replace {
+//                        print("replacing in fetchnearbyplaces")
+//                        self.places = fetchedPlaces
+//                        self.fetchDetailsForPlaces(fetchedPlaces, replace: true)
+//                    } else {
+//                        print("filtering in fetchnearbyplaces")
+//                        // filter out places that are already in placeDetailsList
+//                        let newPlacesToFetch = fetchedPlaces.filter { newPlace in
+//                            !self.placeDetailsList.contains(where: { existingDetail in
+//                                existingDetail.place_id == newPlace.place_id
+//                            })
+//                        }
+//                        
+//                        self.fetchDetailsForPlaces(newPlacesToFetch)
+//                    }
 //                case .failure(let error):
-//                    self?.errorMessage = error.localizedDescription
+//                    self.errorMessage = error.localizedDescription
 //                }
 //            }
 //        }
     }
     
-    private func fetchDetailsForPlaces(_ places: [Place]) {
-          let group = DispatchGroup()
-          var details: [PlaceDetails] = []
-          var fetchError: Error? = nil
-          
-          for place in places {
-              let placeId = place.place_id
-              group.enter()
-              service.fetchPlace(placeId: placeId) { result in
-                  switch result {
-                  case .success(let placeDetails):
-                      if let photos = placeDetails.photos, !photos.isEmpty { //exclude places with no photos
-                          details.append(placeDetails)
-                      }
-                  case .failure(let error):
-                      fetchError = error
-                  }
-                  group.leave()
-              }
-          }
-          
-          group.notify(queue: .main) {
-              if let error = fetchError {
-                  self.errorMessage = error.localizedDescription
-              }
-              // All fetched place details
-              self.placeDetailsList = details
-              
-              // Fetch first photo after placeDetailsList is updated
-              self.fetchPhotosForPlaces(details)
-          }
-      }
+    private func fetchDetailsForPlaces(_ places: [Place], replace: Bool = false) {
+        // Filter out places that already have details fetched
+        var placesToFetchDetailsFor = places
+        if !replace {
+            print("filtering in fetchDetailsForPlaces")
+            placesToFetchDetailsFor = places.filter { newPlace in
+                !self.placeDetailsList.contains(where: { existingDetail in
+                    existingDetail.place_id == newPlace.place_id
+                })
+            }
+        }
+
+        // no new places to fetch
+        guard !placesToFetchDetailsFor.isEmpty else {
+            print("no new places to fetch")
+            self.placeDetailsList = []
+            return
+        }
+
+        let group = DispatchGroup()
+        var fetchedDetails: [PlaceDetails] = []
+        var fetchError: Error? = nil
+        
+        for place in placesToFetchDetailsFor {
+            let placeId = place.place_id
+            group.enter()
+            service.fetchPlace(placeId: placeId) { result in
+                switch result {
+                case .success(let placeDetails):
+                    print("fetched \(placeDetails.name)")
+//                    if let photos = placeDetails.photos, !photos.isEmpty { // exclude places with no photos
+//                        fetchedDetails.append(placeDetails)
+//                    }
+                    
+                     fetchedDetails.append(placeDetails)
+                case .failure(let error):
+                    fetchError = error
+                }
+                group.leave()
+            }
+        }
+
+        group.notify(queue: .main) {
+            if let error = fetchError {
+                self.errorMessage = error.localizedDescription
+            }
+            
+            if replace {
+                self.placeDetailsList = fetchedDetails
+            } else {
+                self.placeDetailsList.append(contentsOf: fetchedDetails)
+            }
+            
+            self.fetchPhotosForPlaces(fetchedDetails)
+        }
+    }
     
     // Fetch photos for all places (only first photos)
     private func fetchPhotosForPlaces(_ places: [PlaceDetails]) {
@@ -233,12 +276,29 @@ class GooglePlacesViewModel: ObservableObject {
         }
     }
     
+    func mapStoredPhotoURLs(_ place: PlaceDetails) {
+        print("mapStoredPhotoURLs called")
+        guard let cachedUrlStrings = self.storedPhotoURL[place.place_id] else {
+            print("Error: No photo URL strings found in cache for place: \(place.name)")
+            return
+        }
+        
+        if let currentPhotos = place.photos {
+            for (index, photo) in currentPhotos.prefix(cachedUrlStrings.count).enumerated() {
+                let ref = photo.photo_reference
+                let urlString = cachedUrlStrings[index]
+                self.photosURL[ref] = urlString
+            }
+        }
+    }
+    
     func fetchAllPhotos(_ place: PlaceDetails) {
         if let stored = storedPlaceDetailsList.first(where: { $0.place_id == place.place_id }) {
-            print("Place already stored: \(stored.name)")
-            print("is the same?: \(place == stored)")
+            print("fetchAllPhotos: Place already stored: \(stored.name)")
+            mapStoredPhotoURLs(place)
+            return
         }
-        return // for testing, just return
+         return // for testing, just return
         guard let photos = place.photos else {
             print("no photos for \(place)")
             return
@@ -250,13 +310,17 @@ class GooglePlacesViewModel: ObservableObject {
                 count = count + 1
                 continue
             }
-            print("called fetch")
+            print("getPhotoURL for \(place.name)")
             getPhotoURL(ref: ref)
         }
-        print("skipped \(count)")
+        print("skipped \(count) calls to getPhotoURL for \(place.name)")
     }
 
     func getPhotoURL(ref: String) -> Void {
+        if self.photosURL[ref] != nil {
+            print("getPhotoURL called but ref already exists")
+            return
+        }
         service.fetchPhotoURL(photoReference: ref) { [weak self] result in
             DispatchQueue.main.async {
                 switch result {

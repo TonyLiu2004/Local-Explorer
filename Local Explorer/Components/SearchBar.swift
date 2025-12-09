@@ -46,6 +46,7 @@ struct SearchBar: View {
                     Image(systemName: "magnifyingglass")
                         .resizable()
                         .frame(width: 20, height: 20)
+                        .padding(.vertical, 12)
                 }
             }
         }

@@ -10,13 +10,10 @@ import CoreLocation
 
 struct Browse: View {
     let location: CLLocation
-//    @StateObject var viewModel = GooglePlacesViewModel()
-//    @ObservedObject var viewModel: GooglePlacesViewModel
     @EnvironmentObject var viewModel: GooglePlacesViewModel
     @State private var lastLocation: CLLocation?
     @State private var selectedPlace: PlaceDetails? = nil
     
-//    @State private var history: [String] = []
     @AppStorage("search_history") private var historyData: Data = Data()
     
     var history: [String] {
@@ -46,11 +43,13 @@ struct Browse: View {
                             } label: {
                                 Image(systemName: "magnifyingglass")
                                     .resizable()
-                                    .frame(width: 24, height: 24)
+                                    .frame(width: 20, height: 20)
                                     .foregroundColor(.white)
+                                    .padding(12)
+                                    .background(Color.black.opacity(0.5))
+                                    .cornerRadius(24)
                             }
-                            .padding(.vertical, 6)
-                            .padding(.horizontal)
+                            .padding(.vertical, 4)
                         }
                     }
                     SearchBar(
@@ -130,13 +129,6 @@ struct Browse: View {
                 keyword: query
             )
         }
-//        .onChange(of: query) {
-//            viewModel.fetchNearbyPlaces(
-//                lat: location.coordinate.latitude,
-//                lon: location.coordinate.longitude,
-//                keyword: query
-//            )
-//        }
         .onChange(of: location) {
             if let last = lastLocation {
                 let distance = location.distance(from: last) // meters
@@ -172,12 +164,13 @@ struct Browse: View {
 
         historyData = (try? JSONEncoder().encode(newHistory)) ?? Data()
         
-        query = ""
         viewModel.fetchNearbyPlaces(
             lat: location.coordinate.latitude,
             lon: location.coordinate.longitude,
-            keyword: query
+            keyword: query,
+            replace: true
         )
+        query = ""
     }
 }
 

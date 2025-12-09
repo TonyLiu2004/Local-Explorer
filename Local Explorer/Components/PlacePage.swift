@@ -29,18 +29,19 @@ struct PlacePage: View {
                                     switch phase {
                                     case .empty:
                                         ProgressView()
-                                            .frame(width: 300, height: 200)
+                                            .frame(width: proxy.size.width, height: 500)
                                     case .success(let image):
                                         image
                                             .resizable()
+//                                            .scaledToFit()
                                             .scaledToFill()
-                                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                                            .frame(width: proxy.size.width)
                                             .clipped()
                                     case .failure:
                                         EmptyView()
                                     @unknown default:
                                         Color.gray
-                                            .frame(width: 360, height: 200)
+                                            .frame(width: proxy.size.width, height: 500)
                                             .cornerRadius(10)
                                     }
                                 }
@@ -119,6 +120,7 @@ struct PlacePage: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
             }//end vstack
             .frame(width: proxy.size.width, height: proxy.size.height, alignment: .topLeading)
+            .background(Color.LightGreen)
         }
         .containerRelativeFrame(.vertical)
         .onTapGesture {
@@ -126,6 +128,7 @@ struct PlacePage: View {
         }
         .task {
             viewModel.fetchStoredPlaces(context: modelContext)
+            viewModel.fetchAllPhotos(place)
         }
     }
 }

@@ -46,7 +46,6 @@ struct ContentView: View {
             }
             .padding()
             .frame(maxWidth: .infinity, alignment: .leading)
-            .overlay(Divider(), alignment: .bottom)
 
             if let location = locationManager.userLocation {
                 TabView {
@@ -74,5 +73,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    ContentView().environmentObject(GooglePlacesViewModel())
 }

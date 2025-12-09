@@ -11,8 +11,7 @@ struct SearchHistoryView: View {
     let history: [String]
     @Binding var query: String
     @Binding var showHistory: Bool
-    var searchFocused: FocusState<Bool>.Binding // Use FocusState.Binding for the boolean state
-
+    var searchFocused: FocusState<Bool>.Binding
     var body: some View {
         if showHistory && !history.isEmpty && searchFocused.wrappedValue {
             VStack {
@@ -22,6 +21,7 @@ struct SearchHistoryView: View {
                         query = item
                         showHistory = false
                         searchFocused.wrappedValue = false
+                        //submit
                     } label: {
                         HStack {
                             Image(systemName: "clock")
