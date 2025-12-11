@@ -14,6 +14,7 @@ struct PlaceCard: View {
     let location: CLLocation?
     let onTap: () -> Void
     @StateObject var viewModel = GooglePlacesViewModel()
+    @Environment(\.modelContext) private var modelContext
 
     var priceText: String {
         guard let price = place.price_level else { return "N/A" }
@@ -48,6 +49,8 @@ struct PlaceCard: View {
         }
     }
     
+    @State var firstURL: URL?
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             VStack(alignment: .leading, spacing: 8) {
@@ -65,15 +68,9 @@ struct PlaceCard: View {
                         Text(types.joined(separator: ", "))
                             .captionStyle()
                     }
+                    Spacer()
                 }
                 .frame(maxWidth: 300)
-            }
-            .onAppear {
-//                print(place.name, place.place_id)
-//                if let loc = location {
-//                    print(loc)
-//                    print("========")
-//                }
             }
             .padding([.leading, .trailing], 8)
             
@@ -95,9 +92,9 @@ struct PlaceCard: View {
                 .captionStyle()
                 .padding(.horizontal, 8)
 
-            if let photoRef = place.photos?.first?.photo_reference {
-                let url = viewModel.photosURL[photoRef]
-                AsyncImage(url: url) { phase in
+//            if let photoRef = place.photos?.first?.photo_reference {
+//                let url = viewModel.photosURL[photoRef]
+            AsyncImage(url: self.firstURL) { phase in
                     switch phase {
                         case .empty:
                             ProgressView()
@@ -117,11 +114,11 @@ struct PlaceCard: View {
                             EmptyView()
                     }
                 }
-            } else {
-                Color.gray
-                    .frame(width: 360, height: 200)
-                    .cornerRadius(10)
-            }
+//            } else {
+//                Color.gray
+//                    .frame(width: 360, height: 200)
+//                    .cornerRadius(10)
+//            }
             
         }
         .padding(.vertical, 8)
@@ -130,6 +127,23 @@ struct PlaceCard: View {
         .cardStyle()
         .onTapGesture {
             onTap()
+        }
+        .task {
+            viewModel.fetchStoredPlaces(context: modelContext)
+            
+            if viewModel.storedPhotoURL[place.place_id] != nil {
+                self.firstURL = viewModel.storedPhotoURL[place.place_id]?.first ?? URL(string: "about:blank")!
+                print("Loaded first image from storage.")
+            } else {
+                print("places images not in cache, fetch images.")
+                viewModel.fetchPhotosForPlaces([place])
+            }
+        }
+        .onChange(of: viewModel.storedPhotoURL) { _ in
+            if let cachedUrls = viewModel.storedPhotoURL[place.place_id] {
+                self.firstURL = cachedUrls.first
+                print("firstURL updated from storedPhotoURL cache.")
+            }
         }
 
     }

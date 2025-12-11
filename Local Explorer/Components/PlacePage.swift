@@ -13,11 +13,12 @@ struct PlacePage: View {
     let onTap: () -> Void
     @StateObject var viewModel = GooglePlacesViewModel()
     @Environment(\.modelContext) private var modelContext
-    
-    var body: some View {
+
+    var body: some View {	
         GeometryReader { proxy in
             VStack(alignment: .leading) {
                 //Start photos
+                
                 let urls = place.photos?
                 .compactMap { viewModel.photosURL[$0.photo_reference] } ?? []
                 

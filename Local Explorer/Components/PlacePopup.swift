@@ -23,6 +23,7 @@ struct PlacePopup: View {
     @State private var selectedOption: String?
     @Environment(\.modelContext) private var modelContext
     @State private var storedPlace: StoredPlaceDetails?
+    @State var urls: [URL] = []
     
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
@@ -52,12 +53,10 @@ struct PlacePopup: View {
             ScrollView{
                 VStack (alignment: .leading, spacing : 12){
                     //Photo gallery
-                    let urls = place.photos?
-                    .compactMap { viewModel.photosURL[$0.photo_reference] } ?? []
                     
                     ScrollView (.horizontal){
                         HStack{
-                            ForEach(urls, id: \.self) { url in
+                            ForEach(self.urls, id: \.self) { url in
                                 AsyncImage(url: url) { phase in
                                     switch phase {
                                     case .empty:
@@ -239,8 +238,22 @@ struct PlacePopup: View {
         .background(.white)
         .clipShape(RoundedRectangle(cornerRadius: 24))
         .shadow(radius: 10)
-        .task{
-            viewModel.fetchAllPhotos(place)
+        .task {
+            viewModel.fetchStoredPlaces(context: modelContext)
+            
+            if viewModel.storedPhotoURL[place.place_id] != nil {
+                self.urls = viewModel.storedPhotoURL[place.place_id] ?? []
+                print("Loaded \(self.urls.count) urls from storage.")
+            } else {
+                print("places images not in cache, fetch images.")
+                viewModel.fetchAllPhotos(place)
+            }
+        }
+        .onChange(of: viewModel.storedPhotoURL) { _ in
+            if let cachedUrls = viewModel.storedPhotoURL[place.place_id] {
+                self.urls = cachedUrls
+                print("URLs updated from storedPhotoURL cache.")
+            }
         }
     }
 }

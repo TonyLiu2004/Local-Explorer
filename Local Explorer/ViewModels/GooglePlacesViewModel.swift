@@ -266,7 +266,7 @@ class GooglePlacesViewModel: ObservableObject {
     }
     
     // Fetch photos for all places (only first photos)
-    private func fetchPhotosForPlaces(_ places: [PlaceDetails]) {
+    func fetchPhotosForPlaces(_ places: [PlaceDetails]) {
         for place in places {
             guard let photoReference = place.photos?.first?.photo_reference else {
                 print("No photos for \(place.name)")

@@ -59,7 +59,9 @@ struct ContentView: View {
                     )
                         .tabItem { Label("Places", systemImage: "mappin.and.ellipse") }
 
-                    SavedView()
+                    SavedView(
+                        locationManager: locationManager
+                    )
                         .tabItem { Label("Saved", systemImage: "bookmark") }
                 }
             } else {
