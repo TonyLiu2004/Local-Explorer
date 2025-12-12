@@ -36,12 +36,6 @@ struct ContentView: View {
                         return title + value
                     }
                     Text(attributed)
-                   // Text("Current Location: ")
-                   //     .bold()
-                   //     .font(.caption)
-                   // + Text(locationManager.locationName)
-                   //     .font(.caption)
-                   //     .foregroundColor(.secondary)
                 }
             }
             .padding()
@@ -60,7 +54,7 @@ struct ContentView: View {
                         .tabItem { Label("Browse", systemImage: "mappin.and.ellipse") }
 
                     SavedView(
-                        locationManager: locationManager
+                        location: location
                     )
                         .tabItem { Label("Saved", systemImage: "bookmark") }
                 }

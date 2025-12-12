@@ -29,7 +29,6 @@ struct Browse: View {
     @State private var showHistory = false
     @FocusState private var searchFocused: Bool
     
-    @State private var currentIndex: Int? = 0
     @State private var currentPlaceId: String?
     @State private var currentRadius: Int = 100
     
@@ -78,7 +77,6 @@ struct Browse: View {
                             searchFocused: $searchFocused
                         )
                     }
-//                    .background(Color.black.opacity(0.6))
                 }
                 .zIndex(100)
                 if (viewModel.placeDetailsList == []) {

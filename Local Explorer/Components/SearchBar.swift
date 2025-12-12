@@ -13,6 +13,8 @@ struct SearchBar: View {
     var searchFocused: FocusState<Bool>.Binding
     var onFocus: () -> Void
     var onSubmit: () -> Void
+    
+    var isBackgroundEnabled: Bool = true
 
     var body: some View {
         VStack(spacing: 0) {
@@ -26,7 +28,7 @@ struct SearchBar: View {
                             .frame(width: 16, height: 16)
                             .padding(12)
 
-                            .foregroundColor(.white)
+                            .foregroundColor(isBackgroundEnabled ? .white : .black)
                     }
                 }
                 TextField("Search…", text: $query, onEditingChanged: { editing in
@@ -41,7 +43,7 @@ struct SearchBar: View {
                 .focused(searchFocused)
                 .padding(6)
                 .foregroundColor(.white)
-                
+
                 Button {
                     onSubmit()
                     searchFocused.wrappedValue = false
@@ -56,26 +58,38 @@ struct SearchBar: View {
                 }
             }//end hstack
             .background(
-                Color.black.opacity(0.6)
+                Color.black.opacity(isBackgroundEnabled ? 0.6 : 0)
             )
             .overlay(
-                RoundedRectangle(cornerRadius: 24)
-                    .stroke(Color.black, lineWidth: 1)
-                    .clipShape(
-                        .rect(
-                            topLeadingRadius: 24,
-                            bottomLeadingRadius: 0,
-                            bottomTrailingRadius: 0,
-                            topTrailingRadius: 24
+                isBackgroundEnabled ?
+                AnyView(
+                    RoundedRectangle(cornerRadius: 24)
+                        .stroke(Color.black, lineWidth: 1)
+                        .clipShape(
+                            .rect(
+                                topLeadingRadius: 24,
+                                bottomLeadingRadius: 0,
+                                bottomTrailingRadius: 0,
+                                topTrailingRadius: 24
+                            )
                         )
-                    )
-            )            .clipShape(
-                .rect(
-                    topLeadingRadius: 24,
-                    bottomLeadingRadius: 0,
-                    bottomTrailingRadius: 0,
-                    topTrailingRadius: 24
                 )
+                :
+                AnyView(RoundedRectangle(cornerRadius: 24)
+                    .stroke(Color.black, lineWidth: 1)
+                )
+            )
+            .clipShape(
+                isBackgroundEnabled ?
+                AnyShape(
+                    .rect(
+                        topLeadingRadius: 24,
+                        bottomLeadingRadius: 0,
+                        bottomTrailingRadius: 0,
+                        topTrailingRadius: 24
+                    )
+                ):
+                AnyShape(Rectangle())
             )
             
         }//end vstack
