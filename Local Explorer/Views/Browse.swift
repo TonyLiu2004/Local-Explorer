@@ -27,11 +27,17 @@ struct Browse: View {
 
     @State private var query = ""
     @State private var showHistory = false
-    
     @FocusState private var searchFocused: Bool
+    
+    @State private var currentIndex: Int? = 0
+    @State private var currentPlaceId: String?
+    @State private var currentRadius: Int = 100
     
     var body: some View {
         VStack {
+//            Button("test"){
+//                viewModel.printPlaceDetailsList()
+//            }
             ZStack (alignment: .top){
                 VStack
                 {
@@ -40,6 +46,7 @@ struct Browse: View {
                             Spacer()
                             Button {
                                 searchFocused = true
+                                query = ""
                             } label: {
                                 Image(systemName: "magnifyingglass")
                                     .resizable()
@@ -52,29 +59,35 @@ struct Browse: View {
                             .padding(.vertical, 4)
                         }
                     }
-                    SearchBar(
-                        query: $query,
-                        searchFocused: $searchFocused,
-                        onFocus: { showHistory = true },
-                        onSubmit: submitSearch
-                    )
-                    .frame(width: searchFocused ? nil : 0, height: searchFocused ? nil : 0)
-                    .opacity(searchFocused ? 1 : 0)
-                    .allowsHitTesting(searchFocused)
-                    
-                    SearchHistoryView(
-                        history: history,
-                        query: $query,
-                        showHistory: $showHistory,
-                        searchFocused: $searchFocused
-                    )
+                    VStack(spacing: 0) {
+                        SearchBar(
+                            query: $query,
+                            searchFocused: $searchFocused,
+                            onFocus: { showHistory = true },
+                            onSubmit: submitSearch
+                        )
+                        .frame(width: searchFocused ? nil : 0, height: searchFocused ? nil : 0)
+                        .opacity(searchFocused ? 1 : 0)
+                        .allowsHitTesting(searchFocused)
+                        
+                        SearchHistoryView(
+                            history: history,
+                            query: $query,
+                            showHistory: $showHistory,
+                            onSubmit: submitSearch,
+                            searchFocused: $searchFocused
+                        )
+                    }
+//                    .background(Color.black.opacity(0.6))
                 }
                 .zIndex(100)
-                .background { searchFocused ? Color.white : Color.clear }
-                
+                if (viewModel.placeDetailsList == []) {
+                    Text("No places found")
+                }
                 ScrollView(.vertical) {
                     LazyVStack(spacing: 0) {
-                        ForEach(viewModel.placeDetailsList, id: \.place_id) { place in
+                        ForEach(Array(viewModel.placeDetailsList.enumerated()), id: \.element.place_id) { index, place in
+                            
                             PlacePage(
                                 place: place,
                                 location: location,
@@ -83,12 +96,34 @@ struct Browse: View {
                                 },
                                 viewModel: viewModel
                             )
+                            .id(place.place_id)
                             Divider()
                         }
                     }
+                    .scrollTargetLayout() //
                 }
                 .scrollTargetBehavior(.paging)
                 .scrollIndicators(.hidden)
+                .scrollPosition(id: $currentPlaceId, anchor: .top)
+                .onChange(of: currentPlaceId) { _, newId in
+                    if let placeId = newId,
+                       let index = viewModel.placeDetailsList.firstIndex(where: { $0.place_id == placeId })
+                    {
+                        print("Current snapped index (derived from ID) is: \(index)")
+
+                        if index == viewModel.placeDetailsList.count - 1 {
+                            print("reached end, curr radius: \(currentRadius)")
+                            viewModel.fetchNearbyPlaces(
+                                lat: location.coordinate.latitude,
+                                lon: location.coordinate.longitude,
+                                radius: self.currentRadius+20,
+                                keyword: query
+                            )
+                            
+                            self.currentRadius+=20
+                        }
+                    }
+                }
             }
         }
         .overlay {
@@ -143,13 +178,9 @@ struct Browse: View {
                 }
             }
         }
-        
     }
     
     func submitSearch(){
-        let trimmed = query.trimmingCharacters(in: .whitespacesAndNewlines)
-        guard !trimmed.isEmpty else { return }
-        
         print("searching for \(query)")
         
         var newHistory = history
@@ -170,7 +201,6 @@ struct Browse: View {
             keyword: query,
             replace: true
         )
-        query = ""
     }
 }
 

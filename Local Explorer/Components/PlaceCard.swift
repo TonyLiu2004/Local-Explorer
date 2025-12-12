@@ -53,6 +53,27 @@ struct PlaceCard: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
+            AsyncImage(url: self.firstURL) { phase in
+                switch phase {
+                    case .empty:
+                        ProgressView()
+                            .frame(width: 360, height: 200)
+                    case .success(let image):
+                        image
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 340, height: 200)
+                            .clipped()
+                            .cornerRadius(10)
+                            .padding(.horizontal)
+                    case .failure:
+                        Color.gray
+                            .frame(width: 360, height: 200)
+                            .cornerRadius(10)
+                    @unknown default:
+                        EmptyView()
+                }
+            }
             VStack(alignment: .leading, spacing: 8) {
                 Text(place.name)
                     .font(.headline)
@@ -71,55 +92,29 @@ struct PlaceCard: View {
                     Spacer()
                 }
                 .frame(maxWidth: 300)
-            }
-            .padding([.leading, .trailing], 8)
-            
-            var status: AttributedString {
-                if let open = place.current_opening_hours?.open_now {
-                    var s = AttributedString(open ? "Open" : "Closed")
-                    s.foregroundColor = open ? .green : .red
-                    return s
-                } else {
-                    return AttributedString("Hours unavailable")
+                
+                var status: AttributedString {
+                    if let open = place.current_opening_hours?.open_now {
+                        var s = AttributedString(open ? "Open" : "Closed")
+                        s.foregroundColor = open ? .green : .red
+                        return s
+                    } else {
+                        return AttributedString("Hours unavailable")
+                    }
                 }
+
+                Text(status)
+                    .captionStyle()
+
+                Text("Price: \(priceText)")
+                    .captionStyle()
             }
-
-            Text(status)
-                .captionStyle()
-                .padding(.horizontal, 8)
-
-            Text("Price: \(priceText)")
-                .captionStyle()
-                .padding(.horizontal, 8)
+            .padding(.horizontal, 20)
+            .padding(.vertical, 6)
 
 //            if let photoRef = place.photos?.first?.photo_reference {
 //                let url = viewModel.photosURL[photoRef]
-            AsyncImage(url: self.firstURL) { phase in
-                    switch phase {
-                        case .empty:
-                            ProgressView()
-                                .frame(width: 360, height: 200)
-                        case .success(let image):
-                            image
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 360, height: 200)
-                                .clipped()
-                                .cornerRadius(10)
-                        case .failure:
-                            Color.gray
-                                .frame(width: 360, height: 200)
-                                .cornerRadius(10)
-                        @unknown default:
-                            EmptyView()
-                    }
-                }
-//            } else {
-//                Color.gray
-//                    .frame(width: 360, height: 200)
-//                    .cornerRadius(10)
-//            }
-            
+
         }
         .padding(.vertical, 8)
         .padding(.horizontal, 8)
@@ -145,6 +140,12 @@ struct PlaceCard: View {
                 print("firstURL updated from storedPhotoURL cache.")
             }
         }
+        .onChange(of: viewModel.photosURL) { _ in
+            if let photo = viewModel.photosURL[place.photos?.first?.photo_reference ?? ""] {
+                self.firstURL = photo
+            }
+        }
+        
 
     }
 }

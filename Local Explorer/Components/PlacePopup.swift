@@ -33,9 +33,9 @@ struct PlacePopup: View {
                     .font(.title2)
                     .bold()
                     .lineLimit(1)
-
+                
                 Spacer()
-
+                
                 Button(action: {
                     withAnimation(.easeInOut(duration: 0.25)) {
                         onClose()
@@ -84,15 +84,15 @@ struct PlacePopup: View {
                     HStack {
                         var ratingText: AttributedString {
                             guard let rating = place.rating else { return AttributedString("") }
-
+                            
                             let full = Int(round(rating))
-
+                            
                             let stars =
-                                String(repeating: "⭐️", count: full)
-
+                            String(repeating: "⭐️", count: full)
+                            
                             return AttributedString("\(String(format: "%.1f", rating)) \(stars) (\(place.user_ratings_total ?? 0))")
                         }
-
+                        
                         Text(ratingText)
                             .captionStyle()
                         Spacer()
@@ -155,7 +155,7 @@ struct PlacePopup: View {
                                     let calendar = Calendar.current
                                     let todayIndex = calendar.component(.weekday, from: Date())
                                     let weekdayTextIndex = (todayIndex + 5) % 7
-
+                                    
                                     if times.indices.contains(weekdayTextIndex) {
                                         Text(times[weekdayTextIndex])
                                             .font(.body)
@@ -214,7 +214,7 @@ struct PlacePopup: View {
                                             .bold()
                                         if let rating = review.rating, let time = review.relative_time_description {
                                             Text("\(String(repeating: "⭐️", count: Int(rating))) · \(time)")
-                                            .captionStyle()
+                                                .captionStyle()
                                         }
                                         if let text = review.text {
                                             Text(text)
@@ -254,6 +254,13 @@ struct PlacePopup: View {
                 self.urls = cachedUrls
                 print("URLs updated from storedPhotoURL cache.")
             }
+        }
+        .onChange(of: viewModel.photosURL) { _ in
+            let photoUrls = place.photos?
+                    .compactMap { $0.photo_reference }
+                    .compactMap { viewModel.photosURL[$0] }
+                    ?? []
+            self.urls = photoUrls
         }
     }
 }

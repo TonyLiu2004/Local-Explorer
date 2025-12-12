@@ -52,12 +52,12 @@ struct ContentView: View {
                     DiscoverView(
                         locationManager: locationManager
                     )
-                        .tabItem { Label("Home", systemImage: "house") }
+                        .tabItem { Label("Discover", systemImage: "house") }
 
                     Browse(
                         location: location
                     )
-                        .tabItem { Label("Places", systemImage: "mappin.and.ellipse") }
+                        .tabItem { Label("Browse", systemImage: "mappin.and.ellipse") }
 
                     SavedView(
                         locationManager: locationManager

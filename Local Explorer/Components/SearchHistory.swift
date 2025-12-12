@@ -11,38 +11,44 @@ struct SearchHistoryView: View {
     let history: [String]
     @Binding var query: String
     @Binding var showHistory: Bool
+    var onSubmit: () -> Void
     var searchFocused: FocusState<Bool>.Binding
     var body: some View {
         if showHistory && !history.isEmpty && searchFocused.wrappedValue {
-            VStack {
-                Divider()
+            VStack(spacing: 0) {
+                //Divider()
                 ForEach(history, id: \.self) { item in
                     Button {
                         query = item
                         showHistory = false
                         searchFocused.wrappedValue = false
+                        onSubmit()
                         //submit
                     } label: {
                         HStack {
                             Image(systemName: "clock")
-                                .padding(.horizontal)
+                                .padding(.leading, 12)
+                                .padding(.trailing, 16)
+                                .foregroundColor(.white)
+                                .frame(width: 20, height: 20)
+                            
                             Text(item)
+                                .foregroundColor(.white)
                             Spacer()
                         }
-                        .padding(.vertical, 8)
+                        .padding(.vertical, 10)
+                        .padding(.leading, 12)
                         .contentShape(Rectangle())
                     }
                     .buttonStyle(.plain)
                     .frame(maxWidth: .infinity, alignment: .leading)
+                    .background(Color.black.opacity(0.6))
                     
-                    Divider()
+                    // Divider()
                 }
             }
-            .background(Color(.systemGray6))
-//            .overlay(
-//                RoundedRectangle(cornerRadius: 8)
-//                    .stroke(Color(.systemGray3), lineWidth: 1)
-//            )
+            .background(Color.clear)
+            .padding(.horizontal, 6)
         }
     }
 }

@@ -18,8 +18,15 @@ struct SearchBar: View {
         VStack(spacing: 0) {
             HStack {
                 if searchFocused.wrappedValue {
-                    Button("<"){
+                    Button{
                         searchFocused.wrappedValue = false
+                    } label: {
+                        Image(systemName: "chevron.left")
+                            .resizable()
+                            .frame(width: 16, height: 16)
+                            .padding(12)
+
+                            .foregroundColor(.white)
                     }
                 }
                 TextField("Search…", text: $query, onEditingChanged: { editing in
@@ -33,11 +40,7 @@ struct SearchBar: View {
                 )
                 .focused(searchFocused)
                 .padding(6)
-                .foregroundColor(.black)
-                .background(
-                    RoundedRectangle(cornerRadius: 8)
-                        .fill(Color.white)
-                )
+                .foregroundColor(.white)
                 
                 Button {
                     onSubmit()
@@ -46,11 +49,38 @@ struct SearchBar: View {
                     Image(systemName: "magnifyingglass")
                         .resizable()
                         .frame(width: 20, height: 20)
-                        .padding(.vertical, 12)
+                        .padding(12)
+                        .background(Color.black.opacity(0.5))
+                        .cornerRadius(24)
+                        .foregroundColor(.white)
                 }
-            }
-        }
-        .padding(.horizontal)
+            }//end hstack
+            .background(
+                Color.black.opacity(0.6)
+            )
+            .overlay(
+                RoundedRectangle(cornerRadius: 24)
+                    .stroke(Color.black, lineWidth: 1)
+                    .clipShape(
+                        .rect(
+                            topLeadingRadius: 24,
+                            bottomLeadingRadius: 0,
+                            bottomTrailingRadius: 0,
+                            topTrailingRadius: 24
+                        )
+                    )
+            )            .clipShape(
+                .rect(
+                    topLeadingRadius: 24,
+                    bottomLeadingRadius: 0,
+                    bottomTrailingRadius: 0,
+                    topTrailingRadius: 24
+                )
+            )
+            
+        }//end vstack
+        .background(Color.clear)
+        .padding([.horizontal, .top], 6)
     }
 }
 

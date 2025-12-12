@@ -116,12 +116,13 @@ struct PlacePage: View {
                     }
                     Text(place.editorial_summary?.overview ?? "")
                         .frame(maxWidth: .infinity, alignment: .leading)
+                    
                 } // end bottom texts
                 .padding()
                 .frame(maxWidth: .infinity, alignment: .leading)
             }//end vstack
             .frame(width: proxy.size.width, height: proxy.size.height, alignment: .topLeading)
-            .background(Color.LightGreen)
+//            .background(Color.LightGreen)
         }
         .containerRelativeFrame(.vertical)
         .onTapGesture {

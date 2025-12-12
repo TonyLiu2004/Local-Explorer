@@ -15,7 +15,7 @@ class GooglePlacesService {
     
     let excludedTypes: [String] = ["political", "neighborhood", "parking"]
     
-    // MARK: - 1. Nearby search
+    // Nearby search
     func searchPlaces(
         lat: Double,
         lon: Double,

@@ -17,7 +17,10 @@ struct SelectableBox: View {
             .foregroundColor(isSelected ? .white : .DarkGreen)
             .frame(maxWidth: .infinity)
             .padding(8)
-            .cardStyle(backgroundColor: isSelected ? .DarkGreen : .LightGray)
+//            .cardStyle(backgroundColor: isSelected ? .DarkGreen : .LightGray)
+            .background(isSelected ? Color.DarkGreen : Color.LightGray)
+            .cornerRadius(12)
+            .shadow(radius: 2)
             .onTapGesture {
                 onSelect()	
             }

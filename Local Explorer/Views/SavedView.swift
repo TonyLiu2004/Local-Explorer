@@ -73,7 +73,7 @@ struct SavedView: View {
             } //end overlay
             .animation(.easeIn(duration: 0.5), value: selectedPlace != nil)
         }
-        .padding()
+        .padding(.vertical)
         .onAppear() {
             print("fetched in saved view")
             viewModel.fetchStoredPlaces(context: modelContext)
