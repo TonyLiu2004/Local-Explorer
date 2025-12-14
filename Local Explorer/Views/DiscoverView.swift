@@ -141,13 +141,15 @@ struct HorizontalPlacesList: View {
                         viewModel: viewModel)
                 } else {
                     ForEach(viewModel.placeDetailsList) { placeDetail in
-                        PlaceCard(
-                            place: placeDetail,
-                            location: location,
-                            onTap: {
-                                onSelect(placeDetail, viewModel)
-                            },
-                            viewModel: viewModel)
+                        if let photos = placeDetail.photos, !photos.isEmpty {
+                            PlaceCard(
+                                place: placeDetail,
+                                location: location,
+                                onTap: {
+                                    onSelect(placeDetail, viewModel)
+                                },
+                                viewModel: viewModel)
+                        }
                     }
                 }
             }

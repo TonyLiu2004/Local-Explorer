@@ -34,9 +34,6 @@ struct Browse: View {
     
     var body: some View {
         VStack {
-//            Button("test"){
-//                viewModel.printPlaceDetailsList()
-//            }
             ZStack (alignment: .top){
                 VStack
                 {
@@ -85,17 +82,18 @@ struct Browse: View {
                 ScrollView(.vertical) {
                     LazyVStack(spacing: 0) {
                         ForEach(Array(viewModel.placeDetailsList.enumerated()), id: \.element.place_id) { index, place in
-                            
-                            PlacePage(
-                                place: place,
-                                location: location,
-                                onTap: {
-                                    selectedPlace = place
-                                },
-                                viewModel: viewModel
-                            )
-                            .id(place.place_id)
-                            Divider()
+                            if let photos = place.photos, !photos.isEmpty {
+                                PlacePage(
+                                    place: place,
+                                    location: location,
+                                    onTap: {
+                                        selectedPlace = place
+                                    },
+                                    viewModel: viewModel
+                                )
+                                .id(place.place_id)
+                                Divider()
+                            }
                         }
                     }
                     .scrollTargetLayout() //

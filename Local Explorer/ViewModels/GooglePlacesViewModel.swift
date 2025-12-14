@@ -174,44 +174,41 @@ class GooglePlacesViewModel: ObservableObject {
     
     // Nearby Places
     func fetchNearbyPlaces(lat: Double, lon: Double, radius: Int = 100, keyword: String? = nil, type: String? = nil, replace: Bool = false) {
-        loadSamplePlaces()
-//        if radius == 200 {
-//            print("radius reached 200 in fetchnearby, ending")
-//            return
-//        }
-//        service.searchPlaces(lat: lat, lon: lon, radius: radius, keyword: keyword, type: type) { [weak self] result in
-//            guard let self = self else {
-//                return
-//            }
-//            
-//            DispatchQueue.main.async {
-//                switch result {
-//                case .success(let fetchedPlaces):
-////                    self?.places = fetchedPlaces
-////                    self.fetchDetailsForPlaces(fetchedPlaces)
-//                    if replace {
-//                        print("replacing in fetchnearbyplaces")
-//                        self.places = fetchedPlaces
-//                        //self.fetchDetailsForPlaces(fetchedPlaces, replace: true)
-//                        self.placeDetailsList = []
-//                        self.keepFetchingUntilResult(fetchedPlaces, lat: lat, lon: lon, radius: radius, keyword: keyword, type: type, replace: true)
-//                    } else {
-//                        print("filtering in fetchnearbyplaces")
-//                        // filter out places that are already in placeDetailsList
-//                        let newPlacesToFetch = fetchedPlaces.filter { newPlace in
-//                            !self.placeDetailsList.contains(where: { existingDetail in
-//                                existingDetail.place_id == newPlace.place_id
-//                            })
-//                        }
-//                        
-//                        //self.fetchDetailsForPlaces(newPlacesToFetch)
-//                        self.keepFetchingUntilResult(newPlacesToFetch, lat: lat, lon: lon, radius: radius, keyword: keyword, type: type)
-//                    }
-//                case .failure(let error):
-//                    self.errorMessage = error.localizedDescription
-//                }
-//            }
-//        } //end service
+//        loadSamplePlaces()
+        if radius == 200 {
+            print("radius reached 200 in fetchnearby, ending")
+            return
+        }
+        service.searchPlaces(lat: lat, lon: lon, radius: radius, keyword: keyword, type: type) { [weak self] result in
+            guard let self = self else {
+                return
+            }
+            
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let fetchedPlaces):
+                    if replace {
+                        print("replacing in fetchnearbyplaces")
+                        self.places = fetchedPlaces
+                        self.placeDetailsList = []
+                        self.keepFetchingUntilResult(fetchedPlaces, lat: lat, lon: lon, radius: radius, keyword: keyword, type: type, replace: true)
+                    } else {
+                        print("filtering in fetchnearbyplaces")
+                        // filter out places that are already in placeDetailsList
+                        let newPlacesToFetch = fetchedPlaces.filter { newPlace in
+                            !self.placeDetailsList.contains(where: { existingDetail in
+                                existingDetail.place_id == newPlace.place_id
+                            })
+                        }
+                        
+                        //self.fetchDetailsForPlaces(newPlacesToFetch)
+                        self.keepFetchingUntilResult(newPlacesToFetch, lat: lat, lon: lon, radius: radius, keyword: keyword, type: type)
+                    }
+                case .failure(let error):
+                    self.errorMessage = error.localizedDescription
+                }
+            }
+        } //end service
     }
     
     func printPlaceDetailsList() {
@@ -315,8 +312,8 @@ class GooglePlacesViewModel: ObservableObject {
             print("fetchAllPhotos: Place already stored: \(stored.name)")
             mapStoredPhotoURLs(place)
             return
-        }
-        return // for testing, just return
+        }	
+        // return // for testing, just return
         guard let photos = place.photos else {
             print("no photos for \(place)")
             return

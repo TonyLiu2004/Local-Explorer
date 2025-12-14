@@ -42,7 +42,7 @@ struct SearchBar: View {
                 )
                 .focused(searchFocused)
                 .padding(6)
-                .foregroundColor(.white)
+                .foregroundColor(isBackgroundEnabled ? .white : .black)
 
                 Button {
                     onSubmit()

@@ -245,8 +245,17 @@ struct PlacePopup: View {
                 self.urls = viewModel.storedPhotoURL[place.place_id] ?? []
                 print("Loaded \(self.urls.count) urls from storage.")
             } else {
-                print("places images not in cache, fetch images.")
-                viewModel.fetchAllPhotos(place)
+                let urlsFromCache = place.photos?
+                    .compactMap { $0.photo_reference }
+                    .compactMap { viewModel.photosURL[$0] } ?? []
+                    
+                if !urlsFromCache.isEmpty && urlsFromCache.count > 1{ // discoverview only loads 1 image
+                    self.urls = urlsFromCache
+                    print("Loaded \(self.urls.count) urls from network cache.")
+                } else {
+                    print("place popup: images for \(place.name) not in storage or cache, initiating fetch.")
+                    viewModel.fetchAllPhotos(place)
+                }
             }
         }
         .onChange(of: viewModel.storedPhotoURL) { _ in
@@ -260,6 +269,7 @@ struct PlacePopup: View {
                     .compactMap { $0.photo_reference }
                     .compactMap { viewModel.photosURL[$0] }
                     ?? []
+            print("placepopup onchange photosURL")
             self.urls = photoUrls
         }
     }
